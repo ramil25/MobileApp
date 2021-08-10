@@ -1,5 +1,5 @@
 package com.education.mobileapp
-
+//all importss
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 
