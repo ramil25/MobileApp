@@ -1,6 +1,9 @@
 package com.education.mobileapp
 //all importss
+import android.app.AlertDialog
+import android.app.Dialog
 import android.content.Context
+import android.content.DialogInterface
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -20,7 +23,15 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun isara(view: View) {
-        finish()
-        System.exit(0)
+        val exitApp = AlertDialog.Builder(this,R.style.ThemeOverlay_MaterialComponents_Dialog)
+        exitApp.setMessage("Sigurado ka ka ba na gusto mong isara ang Wika'skwela?")
+        exitApp.setTitle("Warning")
+        exitApp.setPositiveButton("Oo") { dialog, which ->
+            finish()
+            System.exit(0)
+        }
+        exitApp.setNegativeButton("Hindi", null)
+        exitApp.show()
     }
+
 }
