@@ -9,7 +9,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
-class MyAdapater(private val localDataSet: Array<String>) : RecyclerView.Adapter<MyAdapater.ViewHolder>() {
+class KwarterListAdapter(private val localDataSet: Array<String>) : RecyclerView.Adapter<KwarterListAdapter.ViewHolder>() {
     override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(viewGroup.context)
             .inflate(R.layout.item_view, viewGroup, false)
@@ -32,6 +32,7 @@ class MyAdapater(private val localDataSet: Array<String>) : RecyclerView.Adapter
 
         override fun onClick(v: View) {
             val position = layoutPosition
+            topic_name =tv.text.toString()
             val intent = Intent(context, Pdfview::class.java)
             context.startActivity(intent)
         }
@@ -45,7 +46,7 @@ class MyAdapater(private val localDataSet: Array<String>) : RecyclerView.Adapter
     }
 
     companion object {
-
+        var topic_name:String =""
     }
 
 }

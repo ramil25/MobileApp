@@ -5,5 +5,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Pdfview">
-
+    <com.github.barteksc.pdfviewer.PDFView
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:id="@+id/pdf_reader2"
+        />
 </androidx.constraintlayout.widget.ConstraintLayout>
