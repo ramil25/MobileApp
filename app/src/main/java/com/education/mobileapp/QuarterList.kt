@@ -1,20 +1,28 @@
 package com.education.mobileapp
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
-import com.github.barteksc.pdfviewer.PDFView
+import android.view.View
+import android.widget.Button
 
-class Layunin : AppCompatActivity() {
+class QuarterList : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_layunin)
+        setContentView(R.layout.activity_quarter_list)
         val actionBar = supportActionBar
-        actionBar!!.title ="Layunin"
+        actionBar!!.title="Pumili ng Kwarter"
         actionBar.setDisplayHomeAsUpEnabled(true)
-        val pdfView = findViewById<PDFView>(R.id.pdf_reader)
-        pdfView.fromAsset("layunin.pdf").load()
     }
+    //Kwarters Buttons
+    fun openKwarterTopic(view:View){
+        var btn = view as Button
+        kwarter_label = btn.text.toString()
+        val i = Intent(applicationContext,TopicList::class.java)
+        startActivity(i)
+    }
+    //back button click
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             android.R.id.home -> {
@@ -25,5 +33,10 @@ class Layunin : AppCompatActivity() {
             }
             else -> super.onOptionsItemSelected(item)
         }
+    }
+
+    companion object{
+        var kwarter_label ="";
+
     }
 }

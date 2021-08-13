@@ -14,17 +14,24 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val actionBar = supportActionBar
-        actionBar!!.title="Pangunahing Pamimilian"
+        actionBar!!.title = "Pangunahing Pamimilian"
         setContentView(R.layout.activity_main)
     }
-    private val context : Context = this
+
+    private val context: Context = this
+    //Layunin Button
     fun openLayunin(view: View) {
-        val i = Intent(context,Layunin::class.java);
+        val i = Intent(context, Layunin::class.java);
         startActivity(i);
     }
-
+    //Quarter List Button
+    fun quarterList(view: View) {
+        val i = Intent(context,QuarterList::class.java);
+        startActivity(i);
+    }
+    //Isara Button
     fun isara(view: View) {
-        val exitApp = AlertDialog.Builder(this,R.style.ThemeOverlay_MaterialComponents_Dialog)
+        val exitApp = AlertDialog.Builder(this, R.style.ThemeOverlay_MaterialComponents_Dialog)
         exitApp.setMessage("Sigurado ka ka ba na gusto mong isara ang Wika'skwela?")
         exitApp.setTitle("Warning")
         exitApp.setPositiveButton("Oo") { dialog, which ->
@@ -34,9 +41,13 @@ class MainActivity : AppCompatActivity() {
         exitApp.setNegativeButton("Hindi", null)
         exitApp.show()
     }
+<<<<<<< HEAD
 
     fun pagsusulit(view: View) {
         val i = Intent(context,QuizActivity::class.java);
         startActivity(i);
     }
 }
+=======
+}
+>>>>>>> 25e24e9be620be91a1fba5f0def921756422468b

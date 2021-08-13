@@ -9,9 +9,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MobileApp">
+<<<<<<< HEAD
         <activity
             android:name=".Quiz.QuizActivity"
             android:exported="true" />
+=======
+        <activity android:name=".TopicList"></activity>
+        <activity android:name=".Pdfview" />
+        <activity android:name=".QuarterList" />
+>>>>>>> 25e24e9be620be91a1fba5f0def921756422468b
         <activity android:name=".Layunin" />
         <activity android:name=".SplashScreen">
             <intent-filter>
