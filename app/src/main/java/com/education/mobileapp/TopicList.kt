@@ -19,7 +19,7 @@ class TopicList : AppCompatActivity() {
         actionBar!!.setTitle(title)
         actionBar.setDisplayHomeAsUpEnabled(true)
         if(title=="Ika-unang Kwarter"){
-           topic_labels = arrayOf("Suplemental 1")
+           topic_labels = arrayOf("Suplemental 1","Suplemental 2","Suplemental 3","Suplemental 4","Suplemental 5","Suplemental 6")
         }
         else{
             topic_labels = arrayOf("Kasalukuyang wala pang laman")
