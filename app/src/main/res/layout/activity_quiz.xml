@@ -38,15 +38,19 @@
         android:layout_width="246dp"
         android:layout_height="8dp"
         android:layout_marginTop="24dp"
+        android:max="10"
+        android:progress="0"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.204"
         app:layout_constraintStart_toEndOf="@+id/qNum"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <ScrollView
+        android:id="@+id/scrollView2"
         android:layout_width="0dp"
-        android:layout_height="234dp"
+        android:layout_height="230dp"
         android:layout_marginTop="52dp"
+        android:background="@drawable/sv_border"
         android:fillViewport="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -65,12 +69,83 @@
                 android:fontFamily="casual"
                 android:gravity="center"
                 android:scrollbars="vertical"
-                android:text="Typically, when an accessibility service describes a ViewGroup, it combines content labels from it’s child Views. To override this behavior and indicate that you want to provide your own description for that item and its non-focusable child Views, set a contentDescription on the ViewGroup. You might need to include content labels from child Views within a contentDescription when set on a ViewGroup."
+                android:text="Typically, when an aty s Typically, when an accessibility s Typically, when an accessibility s Typically, when an accessibility s Typically, when an accessibility s Typically, when an accessibility s Typicasibility s  Typically, when an aty s Typically, when an accessibility s Typically, when an accessibility s Typically, when an accessibility s Typically, when an accessibility s Typically, when an accessibility s Typicasibility s "
                 android:textSize="20sp"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
+
+    <TextView
+        android:id="@+id/ch1"
+        android:layout_width="289dp"
+        android:layout_height="43dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/default_option_border_bg"
+        android:fontFamily="sans-serif-medium"
+        android:gravity="center"
+        android:text="Choice 1"
+        android:textColorHint="#292828"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/scrollView2" />
+
+    <TextView
+        android:id="@+id/ch2"
+        android:layout_width="289dp"
+        android:layout_height="43dp"
+        android:layout_marginTop="60dp"
+        android:background="@drawable/default_option_border_bg"
+        android:fontFamily="sans-serif-medium"
+        android:gravity="center"
+        android:text="Choice 2"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/ch1" />
+
+    <TextView
+        android:id="@+id/ch3"
+        android:layout_width="289dp"
+        android:layout_height="43dp"
+        android:layout_marginTop="60dp"
+        android:background="@drawable/default_option_border_bg"
+        android:fontFamily="sans-serif-medium"
+        android:gravity="center"
+        android:text="Choice 3"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/ch2" />
+
+    <TextView
+        android:id="@+id/ch4"
+        android:layout_width="289dp"
+        android:layout_height="43dp"
+        android:layout_marginTop="60dp"
+        android:background="@drawable/default_option_border_bg"
+        android:fontFamily="sans-serif-medium"
+        android:gravity="center"
+        android:text="Choice 4"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/ch3" />
+
+    <Button
+        android:id="@+id/submitBTN"
+        android:layout_width="219dp"
+        android:layout_height="51dp"
+        android:layout_marginTop="52dp"
+        android:fontFamily="sans-serif-medium"
+        android:text="Ipasa"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/ch4" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
