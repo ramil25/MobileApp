@@ -14,6 +14,7 @@
         android:layout_marginTop="24dp"
         android:layout_marginEnd="10dp"
         android:text="Mga Aralin"
+        android:onClick="quarterList"
         android:textSize="24sp"
         app:backgroundTint="@android:color/holo_green_dark"
         app:layout_constraintEnd_toEndOf="parent"
