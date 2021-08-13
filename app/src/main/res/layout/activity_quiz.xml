@@ -11,7 +11,7 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="36dp"
+        android:layout_marginTop="24dp"
         android:fontFamily="sans-serif-medium"
         android:text="Tanong"
         android:textSize="24sp"
@@ -24,8 +24,8 @@
         android:id="@+id/qNum"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="92dp"
+        android:layout_marginStart="44dp"
+        android:layout_marginTop="72dp"
         android:fontFamily="sans-serif-condensed-medium"
         android:text="0 / 10"
         android:textSize="16sp"
@@ -37,9 +37,40 @@
         style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="246dp"
         android:layout_height="8dp"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="24dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.056"
+        app:layout_constraintHorizontal_bias="0.204"
         app:layout_constraintStart_toEndOf="@+id/qNum"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="234dp"
+        android:layout_marginTop="52dp"
+        android:fillViewport="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/questionTV"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="10sp"
+                android:fontFamily="casual"
+                android:gravity="center"
+                android:scrollbars="vertical"
+                android:text="Typically, when an accessibility service describes a ViewGroup, it combines content labels from it’s child Views. To override this behavior and indicate that you want to provide your own description for that item and its non-focusable child Views, set a contentDescription on the ViewGroup. You might need to include content labels from child Views within a contentDescription when set on a ViewGroup."
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

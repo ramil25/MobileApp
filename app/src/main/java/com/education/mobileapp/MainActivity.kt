@@ -41,13 +41,10 @@ class MainActivity : AppCompatActivity() {
         exitApp.setNegativeButton("Hindi", null)
         exitApp.show()
     }
-<<<<<<< HEAD
 
     fun pagsusulit(view: View) {
         val i = Intent(context,QuizActivity::class.java);
         startActivity(i);
     }
 }
-=======
-}
->>>>>>> 25e24e9be620be91a1fba5f0def921756422468b
+
