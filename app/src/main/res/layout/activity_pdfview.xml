@@ -5,9 +5,23 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Pdfview">
+
+    <Button
+        android:id="@+id/bp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Bidyong Panturo"
+        android:onClick="watchVideo"
+        app:backgroundTint="#2196F3"
+        app:layout_constraintBottom_toBottomOf="@+id/pdf_reader2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
     <com.github.barteksc.pdfviewer.PDFView
         android:layout_height="match_parent"
         android:layout_width="match_parent"
         android:id="@+id/pdf_reader2"
-        />
+        >
+
+    </com.github.barteksc.pdfviewer.PDFView>
 </androidx.constraintlayout.widget.ConstraintLayout>

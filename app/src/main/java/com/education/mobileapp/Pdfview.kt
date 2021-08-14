@@ -1,5 +1,6 @@
 package com.education.mobileapp
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.MenuItem
 import android.view.View
@@ -21,6 +22,11 @@ class Pdfview : AppCompatActivity() {
             gg.fromAsset("1_1.pdf").load()
         }
     }
+        //button listener
+    fun watchVideo(view: View) {
+        val intent = Intent(applicationContext,VideoViewer::class.java)
+            startActivity(intent)
+    }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
@@ -33,4 +39,6 @@ class Pdfview : AppCompatActivity() {
             else -> super.onOptionsItemSelected(item)
         }
     }
+
+
 }
