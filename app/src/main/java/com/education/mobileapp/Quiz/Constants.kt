@@ -3,6 +3,9 @@ package com.education.mobileapp.Quiz
 // Holder of questions
 object Constants {
 
+    const val CORRECT_ANSWERS: String = "correct_answers"
+    const val TOTAL_QUESTIONS: String = "total_questions"
+
     // Function returning array list of question sets
     fun getQuestions(): ArrayList<QuestionAdapter> {
         val questionsList = ArrayList<QuestionAdapter>()

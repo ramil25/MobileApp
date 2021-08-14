@@ -1,5 +1,6 @@
 package com.education.mobileapp.Quiz
 
+import android.content.Intent
 import android.graphics.Color
 import android.graphics.Typeface
 import androidx.appcompat.app.AppCompatActivity
@@ -18,9 +19,11 @@ class QuizActivity : AppCompatActivity(), View.OnClickListener {
     private var currentPosition: Int = 1
     private var questionList: ArrayList<QuestionAdapter>? = null
     private var selectedChoicePosition: Int = 0
+    private var correctAnswers: Int = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        supportActionBar!!.hide()
         setContentView(R.layout.activity_quiz)
         // retrieving constants of questions
         questionList = Constants.getQuestions()
@@ -85,14 +88,25 @@ class QuizActivity : AppCompatActivity(), View.OnClickListener {
             R.id.ch4 -> { selectedChoiceView(ch4, 4)}
             R.id.submitBTN -> {
                 if(selectedChoicePosition == 0) {
-                    currentPosition ++
 
-                    // checking if there are more question
+                    // checking if choices are selected
+                   if(submitBTN.text == "Susunod") {
+                       currentPosition ++
+                   }
+                   else if (submitBTN.text == "Resulta") {
+                       val i = Intent(this, ResultActivity::class.java)
+                       i.putExtra(Constants.CORRECT_ANSWERS, correctAnswers)
+                       i.putExtra(Constants.TOTAL_QUESTIONS, questionList!!.size)
+                       startActivity(i)
+                   }
+                   else {
+                       Toast.makeText(this, "Pakiusap pumili ng sagot.", Toast.LENGTH_LONG).show()
+                   }
+                    // checking if quiz was completed
                     when {
                         currentPosition <= questionList!!.size -> {
                         setQuestion()
                         }
-                        else -> { Toast.makeText(this, "Pagtatapos ng pagsasanay.", Toast.LENGTH_LONG).show() }
                     }
                 }
                 else {
@@ -101,6 +115,8 @@ class QuizActivity : AppCompatActivity(), View.OnClickListener {
                     // displaying wrong and correct answer
                     if(question!!.correctAnswer != selectedChoicePosition) {
                         answerView(selectedChoicePosition, R.drawable.wrong_option_border_bg)
+                    } else {
+                        correctAnswers++
                     }
                     answerView(question.correctAnswer, R.drawable.correct_option_border_bg)
 

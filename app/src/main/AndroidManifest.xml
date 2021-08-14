@@ -10,10 +10,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MobileApp">
         <activity
+            android:name=".Quiz.ResultActivity"
+            android:exported="true" />
+        <activity
             android:name=".Quiz.QuizActivity"
             android:exported="true" />
-
-        <activity android:name=".TopicList"></activity>
+        <activity android:name=".TopicList" />
         <activity android:name=".Pdfview" />
         <activity android:name=".QuarterList" />
         <activity android:name=".Layunin" />
