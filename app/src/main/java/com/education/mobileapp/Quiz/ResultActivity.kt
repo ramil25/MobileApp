@@ -4,7 +4,6 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import com.education.mobileapp.MainActivity
 import com.education.mobileapp.R
 import kotlinx.android.synthetic.main.activity_result.*
 
