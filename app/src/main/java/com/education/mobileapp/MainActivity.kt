@@ -8,6 +8,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import com.education.mobileapp.Quiz.QuizActivity
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -40,4 +41,10 @@ class MainActivity : AppCompatActivity() {
         exitApp.setNegativeButton("Hindi", null)
         exitApp.show()
     }
+
+    fun pagsusulit(view: View) {
+        val i = Intent(context,QuizActivity::class.java);
+        startActivity(i);
+    }
 }
+
