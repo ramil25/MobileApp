@@ -8,7 +8,8 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import com.education.mobileapp.Quiz.QuizActivity
+
+
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -43,8 +44,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun pagsusulit(view: View) {
-        val i = Intent(context,QuizActivity::class.java);
-        startActivity(i);
+        val i = Intent(applicationContext,com.education.mobileapp.Quiz.QuizActivity::class.java)
+        startActivity(i)
     }
 }
 

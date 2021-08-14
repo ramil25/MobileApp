@@ -1,5 +1,6 @@
 package com.education.mobileapp.Quiz
 
+import com.education.mobileapp.*
 import android.content.Intent
 import android.graphics.Color
 import android.graphics.Typeface
@@ -23,7 +24,7 @@ class QuizActivity : AppCompatActivity(), View.OnClickListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        supportActionBar!!.hide()
+        //supportActionBar!!.hide()
         setContentView(R.layout.activity_quiz)
         // retrieving constants of questions
         questionList = Constants.getQuestions()
