@@ -2,11 +2,8 @@ package com.education.mobileapp.Quiz
 
 import android.content.ContentValues
 import android.content.Context
-import android.content.Intent
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
-import android.view.LayoutInflater
-import android.view.View
 import android.widget.Toast
 
 class SQLiteDBHelper(var context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null, DATABASE_VERSION) {
@@ -41,6 +38,7 @@ class SQLiteDBHelper(var context: Context) : SQLiteOpenHelper(context, DATABASE_
 
         val quizNum = 1;
 
+        // Insert data
         val db = this.writableDatabase
         val cv = ContentValues()
         cv.put(QUIZ_NUM, quizNum)
