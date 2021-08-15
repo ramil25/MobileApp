@@ -32,7 +32,7 @@ class MainActivity : AppCompatActivity() {
     fun isara(view: View) {
         val exitApp = AlertDialog.Builder(this, R.style.ThemeOverlay_MaterialComponents_Dialog)
         exitApp.setMessage("Sigurado ka ka ba na gusto mong isara ang Wika'skwela?")
-        exitApp.setTitle("Warning")
+        exitApp.setTitle("Babala")
         exitApp.setPositiveButton("Oo") { dialog, which ->
             finish()
             System.exit(0)
