@@ -2,20 +2,25 @@ package com.education.mobileapp
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
+import android.widget.Toolbar
 import androidx.appcompat.app.AppCompatActivity
+import com.education.mobileapp.Quiz.QuizActivity
 import com.github.barteksc.pdfviewer.PDFView
 
 
 class Pdfview : AppCompatActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_pdfview)
         val title: String = KwarterListAdapter.topic_name
         val actionBar = supportActionBar
         actionBar!!.setTitle(title)
+
         actionBar.setDisplayHomeAsUpEnabled(true)
         val loadpdf = findViewById<PDFView>(R.id.pdf_reader2)
         val suplemental = arrayOf("Suplemental 1","Suplemental 2")
@@ -47,9 +52,19 @@ class Pdfview : AppCompatActivity() {
                 finish()
                 true
             }
+            // selected item for button
+            R.id.pagsusulitBTN -> {
+                val intent = Intent(this, QuizActivity::class.java)
+                startActivity(intent)
+                return true
+            }
             else -> super.onOptionsItemSelected(item)
         }
     }
 
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.custom_item_actionbar, menu)
+        return true
+    }
 
 }

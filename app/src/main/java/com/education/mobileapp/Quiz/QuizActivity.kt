@@ -91,7 +91,7 @@ class QuizActivity : AppCompatActivity(), View.OnClickListener {
 
                     // checking if choices are selected
                    if(submitBTN.text == "Susunod") {
-                       currentPosition ++
+                       currentPosition++
                    }
                    else if (submitBTN.text == "Resulta") {
                        val i = Intent(this, ResultActivity::class.java)
@@ -100,13 +100,15 @@ class QuizActivity : AppCompatActivity(), View.OnClickListener {
 
                        startActivity(i)
                    }
-                   else {
+                   else if (submitBTN.text == "Sagutan"){
                        Toast.makeText(this, "Pakiusap pumili ng sagot.", Toast.LENGTH_LONG).show()
                    }
-                    // checking if quiz was completed
+                    // setting another set of question
                     when {
                         currentPosition <= questionList!!.size -> {
                         setQuestion()
+                            // reset button text
+                            submitBTN.text = "Sagutan"
                         }
                     }
                 }
@@ -116,6 +118,9 @@ class QuizActivity : AppCompatActivity(), View.OnClickListener {
                     // displaying wrong and correct answer
                     if(question!!.correctAnswer != selectedChoicePosition) {
                         answerView(selectedChoicePosition, R.drawable.wrong_option_border_bg)
+
+                        // for user doesn't cheat
+                        selectedChoicePosition = 0
                     } else {
                         correctAnswers++
                     }
@@ -155,7 +160,9 @@ class QuizActivity : AppCompatActivity(), View.OnClickListener {
     private fun selectedChoiceView(tv: TextView, selectedChoiceNum: Int) {
         // reset everything to default
         defaultChoiceView()
-        selectedChoicePosition = selectedChoiceNum
+        if(submitBTN.text == "Sagutan") {
+            selectedChoicePosition = selectedChoiceNum
+        }
 
         tv.setTextColor(Color.parseColor("#03A9F4"))
         tv.setTypeface(tv.typeface, Typeface.BOLD)
