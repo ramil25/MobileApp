@@ -9,17 +9,26 @@ import com.education.mobileapp.R
 import kotlinx.android.synthetic.main.activity_result.*
 
 class ResultActivity : AppCompatActivity() {
+
+    var correct: Int = 0
+    var totalQue: Int = 0
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         supportActionBar!!.hide()
         setContentView(R.layout.activity_result)
 
         // getting score and number of question from constant and quiz activity class
-        val correct = intent.getIntExtra(Constants.CORRECT_ANSWERS, 0)
-        val totalQue = intent.getIntExtra(Constants.TOTAL_QUESTIONS, 0)
+        correct = intent.getIntExtra(Constants.CORRECT_ANSWERS, 0)
+        totalQue = intent.getIntExtra(Constants.TOTAL_QUESTIONS, 0)
 
         // displaying score
-        scoreTV.text = "$correct / $totalQue"
+        pointTV.text = "$correct"
+        queNumTV.text = "$totalQue"
+
+        // inserting data of quiz result to database
+        var db = SQLiteDBHelper(this)
+        db.insertData(pointTV.text.toString().toInt(), queNumTV.text.toString().toInt())
     }
     // Function for going back to home
     fun home(view: View) {
