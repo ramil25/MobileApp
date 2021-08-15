@@ -97,6 +97,7 @@ class QuizActivity : AppCompatActivity(), View.OnClickListener {
                        val i = Intent(this, ResultActivity::class.java)
                        i.putExtra(Constants.CORRECT_ANSWERS, correctAnswers)
                        i.putExtra(Constants.TOTAL_QUESTIONS, questionList!!.size)
+
                        startActivity(i)
                    }
                    else {
