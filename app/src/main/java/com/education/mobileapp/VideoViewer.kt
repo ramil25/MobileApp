@@ -4,6 +4,7 @@ import android.app.AlertDialog
 import android.content.Intent
 import android.content.res.Configuration
 import android.graphics.drawable.GradientDrawable
+import android.media.MediaPlayer
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -17,42 +18,29 @@ class VideoViewer : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         val newConfig: Configuration
         setContentView(R.layout.activity_video_viewer)
-        val actionBar =supportActionBar
+        val actionBar = supportActionBar
         actionBar!!.setDisplayHomeAsUpEnabled(true)
-        actionBar!!.title =QuarterList.kwarter_label
+        actionBar!!.title = QuarterList.kwarter_label
         val vv = findViewById<VideoView>(R.id.videoView)
         val mediaController = MediaController(this)
-        var orientation:Int = resources.configuration.orientation
+        var orientation: Int = resources.configuration.orientation
         newConfig = Configuration(this.resources.configuration)
         if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE) {
             actionBar!!.hide()
         }
         mediaController.setMediaPlayer(vv)
         vv.setMediaController(mediaController)
-        val suplemental = arrayOf("Suplemental 1","Suplemental 2")
-        val video =arrayOf("vs1")
-        var i:Int =0;
-        if(QuarterList.kwarter_label=="Ika-unang Kwarter")
-        {
-            while (i<suplemental.size){
-                if(KwarterListAdapter.topic_name==suplemental[i]){
-                    vv.setVideoURI(Uri.parse("android.resource://$packageName/raw/"+video[i]))
-                    vv.start()
+        val suplemental = arrayOf("Suplemental 1", "Suplemental 2")
+        val video = arrayOf("vs1", "")
+        var i: Int = 0;
+        if (QuarterList.kwarter_label == "Ika-unang Kwarter") {
+            while (i < suplemental.size) {
+                if (KwarterListAdapter.topic_name == suplemental[i]) {
+                        vv.setVideoURI(Uri.parse("android.resource://$packageName/raw/" + video[i]))
+                        vv.start()
                     i = suplemental.size
-                }
-                else{
-                    if(video[i]==null){
-                        val noVideo= AlertDialog.Builder(this, R.style.ThemeOverlay_MaterialComponents_Dialog)
-                        noVideo.setMessage("Walang natagpuan na bidyo para sa suplemental na ito.")
-                        noVideo.setTitle("Babala")
-                        noVideo.setPositiveButton("Naiintindihan ko") { dialog, which ->
-                            val i = Intent(applicationContext,Pdfview::class.java)
-                            startActivity(i)
-                        }
-                        noVideo.show()
-                    }else {
-                        i++
-                    }
+                } else {
+                    i++
                 }
             }
         }
