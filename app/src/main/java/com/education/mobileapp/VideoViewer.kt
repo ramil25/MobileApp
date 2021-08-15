@@ -11,6 +11,8 @@ class VideoViewer : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_video_viewer)
+        val actionBar =supportActionBar
+        actionBar!!.hide()
         val vv = findViewById<VideoView>(R.id.videoView)
         val mediaController = MediaController(this)
         mediaController.setMediaPlayer(vv)
