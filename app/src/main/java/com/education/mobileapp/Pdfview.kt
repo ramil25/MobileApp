@@ -17,9 +17,20 @@ class Pdfview : AppCompatActivity() {
         val actionBar = supportActionBar
         actionBar!!.setTitle(title)
         actionBar.setDisplayHomeAsUpEnabled(true)
-        val gg = findViewById<PDFView>(R.id.pdf_reader2)
-        if(title=="Suplemental 1" && QuarterList.kwarter_label=="Ika-unang Kwarter") {
-            gg.fromAsset("1_1.pdf").load()
+        val loadpdf = findViewById<PDFView>(R.id.pdf_reader2)
+        val suplemental = arrayOf("Suplemental 1","Suplemental 2")
+        val pdfs =arrayOf("1_1.pdf","1_2.pdf")
+
+        if(QuarterList.kwarter_label=="Ika-unang Kwarter") {
+            var i:Int =0
+            while (i<pdfs.size) {
+                if (title == suplemental[i]) {
+                    loadpdf.fromAsset(pdfs[i]).load()
+                    i =pdfs.size
+                }else{
+                    i++
+                }
+            }
         }
     }
         //button listener
