@@ -53,4 +53,5 @@ class SQLiteDBHelper(var context: Context) : SQLiteOpenHelper(context, DATABASE_
             Toast.makeText(context, "Quiz Info Inserted.", Toast.LENGTH_SHORT).show()
         }
     }
+
 }

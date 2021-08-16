@@ -71,6 +71,7 @@
                 android:gravity="center"
                 android:scrollbars="vertical"
                 android:text="Typically, when an aty s Typically, when an accessibility s Typically, when an accessibility s Typically, when an accessibility s Typically, when an accessibility s Typically, when an accessibility s Typicasibility s  Typically, when an aty s Typically, when an accessibility s Typically, when an accessibility s Typically, when an accessibility s Typically, when an accessibility s Typically, when an accessibility s Typicasibility s "
+                android:textColor="#ffffff"
                 android:textSize="20sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
