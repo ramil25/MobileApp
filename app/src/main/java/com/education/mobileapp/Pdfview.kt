@@ -5,10 +5,9 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
-import android.widget.Toast
-import android.widget.Toolbar
 import androidx.appcompat.app.AppCompatActivity
-import com.education.mobileapp.Quiz.QuizActivity
+import com.education.mobileapp.Quiz.QuizType1
+import com.education.mobileapp.Quiz.QuizType2
 import com.github.barteksc.pdfviewer.PDFView
 
 
@@ -43,9 +42,19 @@ class Pdfview : AppCompatActivity() {
             }
             // selected item for button
             R.id.pagsusulitBTN -> {
-                val intent = Intent(this, QuizActivity::class.java)
-                startActivity(intent)
+
+                val title: String = KwarterListAdapter.topic_name
+                if(title=="Suplemental 1" && QuarterList.kwarter_label=="Ika-unang Kwarter") {
+                    val intent = Intent(this, QuizType1::class.java)
+                    startActivity(intent)
+                }
+                else if (title=="Suplemental 2" && QuarterList.kwarter_label=="Ika-unang Kwarter") {
+                    val intent = Intent(this, QuizType2::class.java)
+                    startActivity(intent)
+                }
+
                 return true
+
             }
             else -> super.onOptionsItemSelected(item)
         }
