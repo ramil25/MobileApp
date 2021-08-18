@@ -22,8 +22,8 @@ class Pdfview : AppCompatActivity() {
 
         actionBar.setDisplayHomeAsUpEnabled(true)
         val loadpdf = findViewById<PDFView>(R.id.pdf_reader2)
-        val suplemental = arrayOf("Suplemental 1","Suplemental 2")
-        val pdfs =arrayOf("1_1.pdf","1_2.pdf")
+        val suplemental = arrayOf("Suplemental 1","Suplemental 2","Suplemental 3","Suplemental 4","Suplemental 5")
+        val pdfs =arrayOf("1_1.pdf","1_2.pdf","1_3.pdf","1_4.pdf","1_5.pdf")
 
         if(QuarterList.kwarter_label=="Ika-unang Kwarter") {
             var i:Int =0
