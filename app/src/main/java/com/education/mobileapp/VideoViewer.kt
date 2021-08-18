@@ -30,8 +30,8 @@ class VideoViewer : AppCompatActivity() {
         }
         mediaController.setMediaPlayer(vv)
         vv.setMediaController(mediaController)
-        val suplemental = arrayOf("Suplemental 1", "Suplemental 2")
-        val video = arrayOf("vs1", "")
+        val suplemental = arrayOf("Suplemental 1", "Suplemental 2","Suplemental 3","Suplemental 4","Suplemental 5")
+        val video = arrayOf("vs1", "","","","","")
         var i: Int = 0;
         if (QuarterList.kwarter_label == "Ika-unang Kwarter") {
             while (i < suplemental.size) {
