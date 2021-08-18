@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#8ADAD6CD"
-    tools:context=".Quiz.QuizType1">
+    tools:context=".Quiz.QuizType2">
 
     <TextView
         android:id="@+id/textView"
@@ -53,7 +53,7 @@
         android:layout_width="246dp"
         android:layout_height="8dp"
         android:layout_marginTop="24dp"
-        android:max="10"
+        android:max="5"
         android:progress="0"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.204"
@@ -84,7 +84,7 @@
                 android:fontFamily="casual"
                 android:gravity="center"
                 android:scrollbars="vertical"
-                android:text="Typically, when an aty s Typically, when an accessibility s Typically, when an accessibility s Typically, when an accessibility s Typically, when an accessibility s Typically, when an accessibility s Typicasibility s  Typically, when an aty s Typically, when an accessibility s Typically, when an accessibility s Typically, when an accessibility s Typically, when an accessibility s Typically, when an accessibility s Typicasibility s "
+                android:text="Typically, when an aty s Typically, when an accessibility s Typically, when an accessibility s Typically, when an accessibility s Typically, when an accessibility s Typically, when an accessibility s Typicasibility s  Typically, when an aty s Typically, when an accessibility s Typically, when an accessibility s Ts Typic"
                 android:textColor="#ffffff"
                 android:textSize="20sp"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -99,7 +99,7 @@
         android:id="@+id/ch1"
         android:layout_width="289dp"
         android:layout_height="43dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="80dp"
         android:background="@drawable/default_option_border_bg"
         android:fontFamily="sans-serif-medium"
         android:gravity="center"
@@ -114,7 +114,7 @@
         android:id="@+id/ch2"
         android:layout_width="289dp"
         android:layout_height="43dp"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="84dp"
         android:background="@drawable/default_option_border_bg"
         android:fontFamily="sans-serif-medium"
         android:gravity="center"
@@ -124,44 +124,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/ch1" />
 
-    <TextView
-        android:id="@+id/ch3"
-        android:layout_width="289dp"
-        android:layout_height="43dp"
-        android:layout_marginTop="60dp"
-        android:background="@drawable/default_option_border_bg"
-        android:fontFamily="sans-serif-medium"
-        android:gravity="center"
-        android:text="Choice 3"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/ch2" />
-
-    <TextView
-        android:id="@+id/ch4"
-        android:layout_width="289dp"
-        android:layout_height="43dp"
-        android:layout_marginTop="60dp"
-        android:background="@drawable/default_option_border_bg"
-        android:fontFamily="sans-serif-medium"
-        android:gravity="center"
-        android:text="Choice 4"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/ch3" />
-
     <Button
         android:id="@+id/submitBTN"
         android:layout_width="219dp"
         android:layout_height="51dp"
-        android:layout_marginTop="52dp"
+        android:layout_marginTop="76dp"
         android:fontFamily="sans-serif-medium"
         android:text="Sagutan"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/ch4" />
+        app:layout_constraintTop_toTopOf="@+id/ch2" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+

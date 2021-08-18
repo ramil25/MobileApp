@@ -10,16 +10,18 @@ import android.view.View
 import android.widget.ProgressBar
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.core.content.ContextCompat
 import com.education.mobileapp.R
 import kotlinx.android.synthetic.main.activity_quiz.*
 
-class QuizActivity : AppCompatActivity(), View.OnClickListener {
+class QuizType1 : AppCompatActivity(), View.OnClickListener {
 
     private var currentPosition: Int = 1
-    private var questionList: ArrayList<QuestionAdapter>? = null
+    private var questionList: ArrayList<QuestionModel>? = null
     private var selectedChoicePosition: Int = 0
     private var correctAnswers: Int = 0
+    private var pagsasanayNum: Int = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,7 +30,20 @@ class QuizActivity : AppCompatActivity(), View.OnClickListener {
         // retrieving constants of questions
         questionList = Constants.getQuestions()
 
+        // app dialog for panuto
+        val builder = AlertDialog.Builder(this)
+        builder.setTitle("Panuto")
+        builder.setMessage("Tukuyin ang hinihinging tamang sagot sa bawat bilang.")
+        builder.setPositiveButton("Simulan") { dialog, which -> // Do nothing
+        }
+        builder.show()
+
+        // setting question
         setQuestion()
+
+        // getting pagsasanay number and display it
+        pagsasanayNum = Constants.PAGSASANAY
+        quizNumTV.text = pagsasanayNum.toString()
 
         // on click listeners
         ch1.setOnClickListener(this)
@@ -40,12 +55,12 @@ class QuizActivity : AppCompatActivity(), View.OnClickListener {
 
     // Function setting question
     private fun setQuestion() {
-        val question = questionList!![currentPosition-1]
+        val question = questionList!![currentPosition - 1]
         // default view of choices
         defaultChoiceView()
 
         // checking if no more question then changing button text
-        if(currentPosition != questionList!!.size) {
+        if (currentPosition != questionList!!.size) {
             submitBTN.text = "Sagutan"
         }
 
@@ -57,10 +72,10 @@ class QuizActivity : AppCompatActivity(), View.OnClickListener {
         questionTV.text = question!!.question
 
         // getting choices and displaying it
-        ch1.text =question.choice1
-        ch2.text =question.choice2
-        ch3.text =question.choice3
-        ch4.text =question.choice4
+        ch1.text = question.choice1
+        ch2.text = question.choice2
+        ch3.text = question.choice3
+        ch4.text = question.choice4
     }
 
     // Function of displaying default view of choices
@@ -72,7 +87,7 @@ class QuizActivity : AppCompatActivity(), View.OnClickListener {
         options.add(2, ch3)
         options.add(3, ch4)
 
-        for(option in options) {
+        for (option in options) {
             option.setTextColor(Color.parseColor("#292828"))
             option.typeface = Typeface.DEFAULT
             option.background = ContextCompat.getDrawable(this, R.drawable.default_option_border_bg)
@@ -81,42 +96,47 @@ class QuizActivity : AppCompatActivity(), View.OnClickListener {
 
     // On click function of choices
     override fun onClick(v: View?) {
-        when(v?.id) {
-            R.id.ch1 -> { selectedChoiceView(ch1, 1)}
-            R.id.ch2 -> { selectedChoiceView(ch2, 2)}
-            R.id.ch3 -> { selectedChoiceView(ch3, 3)}
-            R.id.ch4 -> { selectedChoiceView(ch4, 4)}
+        when (v?.id) {
+            R.id.ch1 -> {
+                selectedChoiceView(ch1, 1)
+            }
+            R.id.ch2 -> {
+                selectedChoiceView(ch2, 2)
+            }
+            R.id.ch3 -> {
+                selectedChoiceView(ch3, 3)
+            }
+            R.id.ch4 -> {
+                selectedChoiceView(ch4, 4)
+            }
             R.id.submitBTN -> {
-                if(selectedChoicePosition == 0) {
+                if (selectedChoicePosition == 0) {
 
                     // checking if choices are selected
-                   if(submitBTN.text == "Susunod") {
-                       currentPosition++
-                   }
-                   else if (submitBTN.text == "Resulta") {
-                       val i = Intent(this, ResultActivity::class.java)
-                       i.putExtra(Constants.CORRECT_ANSWERS, correctAnswers)
-                       i.putExtra(Constants.TOTAL_QUESTIONS, questionList!!.size)
+                    if (submitBTN.text == "Susunod") {
+                        currentPosition++
+                    } else if (submitBTN.text == "Resulta") {
+                        val i = Intent(this, ResultActivity::class.java)
+                        i.putExtra(Constants.CORRECT_ANSWERS, correctAnswers)
+                        i.putExtra(Constants.TOTAL_QUESTIONS, questionList!!.size)
 
-                       startActivity(i)
-                   }
-                   else if (submitBTN.text == "Sagutan"){
-                       Toast.makeText(this, "Pakiusap pumili ng sagot.", Toast.LENGTH_LONG).show()
-                   }
+                        startActivity(i)
+                    } else if (submitBTN.text == "Sagutan") {
+                        Toast.makeText(this, "Pakiusap pumili ng sagot.", Toast.LENGTH_LONG).show()
+                    }
                     // setting another set of question
                     when {
                         currentPosition <= questionList!!.size -> {
-                        setQuestion()
+                            setQuestion()
                             // reset button text
                             submitBTN.text = "Sagutan"
                         }
                     }
-                }
-                else {
+                } else {
                     // getting position of question
                     val question = questionList?.get(currentPosition - 1)
                     // displaying wrong and correct answer
-                    if(question!!.correctAnswer != selectedChoicePosition) {
+                    if (question!!.correctAnswer != selectedChoicePosition) {
                         answerView(selectedChoicePosition, R.drawable.wrong_option_border_bg)
 
                         // for user doesn't cheat
@@ -127,7 +147,7 @@ class QuizActivity : AppCompatActivity(), View.OnClickListener {
                     answerView(question.correctAnswer, R.drawable.correct_option_border_bg)
 
                     // checking if there are more question
-                    if(currentPosition >= questionList!!.size) {
+                    if (currentPosition >= questionList!!.size) {
                         submitBTN.text = "Resulta"
                     } else {
                         submitBTN.text = "Susunod"
@@ -140,7 +160,7 @@ class QuizActivity : AppCompatActivity(), View.OnClickListener {
 
     // Function for answer view
     private fun answerView(answer: Int, drawableView: Int) {
-        when(answer) {
+        when (answer) {
             1 -> {
                 ch1.background = ContextCompat.getDrawable(this, drawableView)
             }
@@ -160,7 +180,7 @@ class QuizActivity : AppCompatActivity(), View.OnClickListener {
     private fun selectedChoiceView(tv: TextView, selectedChoiceNum: Int) {
         // reset everything to default
         defaultChoiceView()
-        if(submitBTN.text == "Sagutan") {
+        if (submitBTN.text == "Sagutan") {
             selectedChoicePosition = selectedChoiceNum
         }
 
@@ -168,4 +188,5 @@ class QuizActivity : AppCompatActivity(), View.OnClickListener {
         tv.setTypeface(tv.typeface, Typeface.BOLD)
         tv.background = ContextCompat.getDrawable(this, R.drawable.selected_option_border_bg)
     }
+
 }

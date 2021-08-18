@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MobileApp">
         <activity
+            android:name=".Quiz.QuizType2"
+            android:exported="true" />
+        <activity
             android:name=".Quiz.QuizzesScores"
             android:exported="true" />
         <activity android:name=".VideoViewer" />
@@ -18,7 +21,7 @@
         <activity android:name=".QuarterList" />
         <activity android:name=".Layunin" />
         <activity
-            android:name=".Quiz.QuizActivity"
+            android:name=".Quiz.QuizType1"
             android:exported="true" />
         <activity
             android:name=".Quiz.ResultActivity"
