@@ -18,6 +18,9 @@
         <activity
             android:name=".Quiz.QuizzesScores"
             android:exported="true" />
+        <activity
+            android:name=".Quiz.QuizType4"
+            android:exported="true" />
         <activity android:name=".VideoViewer" />
         <activity android:name=".TopicList" />
         <activity android:name=".Pdfview" />

@@ -8,8 +8,8 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.education.mobileapp.Quiz.QuizType1
 import com.education.mobileapp.Quiz.QuizType2
+import com.education.mobileapp.Quiz.QuizType4
 import com.github.barteksc.pdfviewer.PDFView
-
 
 class Pdfview : AppCompatActivity() {
 
@@ -58,12 +58,16 @@ class Pdfview : AppCompatActivity() {
 
                 // the direction of quizzes
                 when {
-                    title=="Suplemental 1" && QuarterList.kwarter_label=="Ika-unang Kwarter" -> {
+                    title=="Suplemental 1" && QuarterList.kwarter_label=="Ika-unang Kwarter" || title=="Suplemental 5" && QuarterList.kwarter_label=="Ika-unang Kwarter" -> {
                         val intent = Intent(this, QuizType1::class.java)
                         startActivity(intent)
                     }
                     title=="Suplemental 2" && QuarterList.kwarter_label=="Ika-unang Kwarter" -> {
                         val intent = Intent(this, QuizType2::class.java)
+                        startActivity(intent)
+                    }
+                    title=="Suplemental 3" && QuarterList.kwarter_label=="Ika-unang Kwarter" || title=="Suplemental 4" && QuarterList.kwarter_label=="Ika-unang Kwarter"-> {
+                        val intent = Intent(this, QuizType4::class.java)
                         startActivity(intent)
                     }
                 }

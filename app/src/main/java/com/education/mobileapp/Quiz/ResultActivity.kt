@@ -17,7 +17,7 @@ class ResultActivity : AppCompatActivity() {
     var kwarter: Int = 0
     var supl: Int = 0
     var quizNum: Int = 0
-    var hide: Int = 0
+    var hasNext: Int = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -47,19 +47,18 @@ class ResultActivity : AppCompatActivity() {
         )
 
         // setting if next quiz is need to hide
-        hide = intent.getIntExtra(IS_HIDE, 0)
-        isHideTV.text = "$hide"
+        hasNext = intent.getIntExtra(HAS_NEXT_QUIZ, 0)
+        hasNextTV.text = "$hasNext"
 
         // checking if there are more pag sasanay
         val title: String = KwarterListAdapter.topic_name
 
-                if (title == "Suplemental 2" && QuarterList.kwarter_label == "Ika-unang Kwarter") {
-                    imageButton.visibility = View.INVISIBLE
-                    button8.visibility = View.VISIBLE
-                }
 
                 // hiding button
-                if (isHideTV.text == "1")  {
+                if (hasNextTV.text == "1")  {
+                    imageButton.visibility = View.INVISIBLE
+                    button8.visibility = View.VISIBLE
+                } else {
                     imageButton.visibility = View.VISIBLE
                     button8.visibility = View.INVISIBLE
                 }

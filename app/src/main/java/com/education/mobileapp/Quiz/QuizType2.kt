@@ -8,6 +8,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.core.content.ContextCompat
 import com.education.mobileapp.KwarterListAdapter
 import com.education.mobileapp.QuarterList
@@ -23,6 +24,7 @@ class QuizType2 : AppCompatActivity(), View.OnClickListener {
     private var selectedChoicePosition: Int = 0
     private var correctAnswers: Int = 0
     private var pagsasanayNum: Int = 0
+    private var hasNextQuiz = 0
     private var kwart: Int = 0
     private var supl: Int = 0
 
@@ -31,7 +33,14 @@ class QuizType2 : AppCompatActivity(), View.OnClickListener {
         supportActionBar!!.hide()
         setContentView(R.layout.activity_quiz_type2)
 
+        // alert dialog builder
+        val builder = AlertDialog.Builder(this)
+        builder.setTitle("Panuto")
+        builder.setPositiveButton("Simulan") { dialog, which -> // Do nothing
+        }
+
         val title: String = KwarterListAdapter.topic_name
+
         when {
            title=="Suplemental 2" && QuarterList.kwarter_label=="Ika-unang Kwarter" -> {
                 // retrieving constants of questions
@@ -41,8 +50,13 @@ class QuizType2 : AppCompatActivity(), View.OnClickListener {
                 supl = 2
                 pagsasanayNum = 1
                 quizNumTV1.text = pagsasanayNum.toString()
+               hasNextQuiz = 1
+               // message of dialog
+               builder.setMessage("Basahin ang sariling pagsasalaysay batay sa binasang parabula at piliin sa loob ng panaklong ang angkop na pang – ugnay.")
             }
         }
+        // showing app dialog
+        builder.show()
 
         ch1.setOnClickListener(this)
         ch2.setOnClickListener(this)
@@ -73,6 +87,7 @@ class QuizType2 : AppCompatActivity(), View.OnClickListener {
                         i.putExtra(PAGSASANAY, pagsasanayNum)
                         i.putExtra(CORRECT_ANSWERS, correctAnswers)
                         i.putExtra(TOTAL_QUESTIONS, questionList!!.size)
+                        i.putExtra(HAS_NEXT_QUIZ, hasNextQuiz)
 
                         startActivity(i)
                     } else if (submitBTN1.text == "Sagutan") {
@@ -99,6 +114,9 @@ class QuizType2 : AppCompatActivity(), View.OnClickListener {
                         correctAnswers++
                     }
                     answerView(question.correctAnswer, R.drawable.correct_option_border_bg)
+                    //disable choices to be clicked
+                    ch1.isEnabled = false
+                    ch2.isEnabled = false
 
                     // checking if there are more question
                     if (currentPosition >= questionList!!.size) {
@@ -118,6 +136,10 @@ class QuizType2 : AppCompatActivity(), View.OnClickListener {
         val question = questionList!![currentPosition - 1]
         // default view of choices
         defaultChoiceView()
+
+        // enable choices to be clicked
+        ch1.isEnabled = true
+        ch2.isEnabled = true
 
         // checking if no more question then changing button text
         if (currentPosition != questionList!!.size) {

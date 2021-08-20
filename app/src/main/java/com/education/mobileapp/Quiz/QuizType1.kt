@@ -5,6 +5,7 @@ import android.graphics.Color
 import android.graphics.Typeface
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.method.ScrollingMovementMethod
 import android.view.View
 import android.widget.TextView
 import android.widget.Toast
@@ -37,25 +38,40 @@ class QuizType1 : AppCompatActivity(), View.OnClickListener {
         supportActionBar!!.hide()
         setContentView(R.layout.activity_quiz)
 
+        // alert dialog builder
+        val builder = AlertDialog.Builder(this)
+        builder.setTitle("Panuto")
+        builder.setPositiveButton("Simulan") { dialog, which -> // Do nothing
+        }
+
         val title: String = KwarterListAdapter.topic_name
+
         // retrieving constants of questions
         when {
             title=="Suplemental 1" && QuarterList.kwarter_label=="Ika-unang Kwarter" -> {
+                //getting question set
                 questionList = Constants.getQuestions()
-
                 // getting quiz info and display it )
                 pagsasanayNum = 1
                 quizNumTV.text = pagsasanayNum.toString()
                 kwarter = 1
                 suplemental = 1
+                // message of dialog
+                builder.setMessage("Tukuyin ang hinihinging tamang sagot sa bawat bilang.")
+            }
+            title=="Suplemental 5" && QuarterList.kwarter_label=="Ika-unang Kwarter" -> {
+                //getting question set
+                questionList = Constants6.getQuestions()
+                // getting quiz info and display it )
+                pagsasanayNum = 1
+                quizNumTV.text = pagsasanayNum.toString()
+                kwarter = 1
+                suplemental = 5
+                // message of dialog
+                builder.setMessage("Basahin at unawaing mabuti ang bawat aytem. Piliin ang pinakaangkop na sagot sa bawat pahayag.")
             }
         }
-        // app dialog for panuto
-        val builder = AlertDialog.Builder(this)
-        builder.setTitle("Panuto")
-        builder.setMessage("Tukuyin ang hinihinging tamang sagot sa bawat bilang.")
-        builder.setPositiveButton("Simulan") { dialog, which -> // Do nothing
-        }
+        // showing app dialog
         builder.show()
 
         // setting question
@@ -67,6 +83,7 @@ class QuizType1 : AppCompatActivity(), View.OnClickListener {
         ch3.setOnClickListener(this)
         ch4.setOnClickListener(this)
         submitBTN.setOnClickListener(this)
+
     }
 
     // Function setting question
@@ -74,6 +91,12 @@ class QuizType1 : AppCompatActivity(), View.OnClickListener {
         val question = questionList!![currentPosition - 1]
         // default view of choices
         defaultChoiceView()
+
+        // enable choices to be clicked
+        ch1.isEnabled = true
+        ch2.isEnabled = true
+        ch3.isEnabled = true
+        ch4.isEnabled = true
 
         // checking if no more question then changing button text
         if (currentPosition != questionList!!.size) {
@@ -166,6 +189,11 @@ class QuizType1 : AppCompatActivity(), View.OnClickListener {
                         correctAnswers++
                     }
                     answerView(question.correctAnswer, R.drawable.correct_option_border_bg)
+                    // disable choices to be clicked
+                    ch1.isEnabled = false
+                    ch2.isEnabled = false
+                    ch3.isEnabled = false
+                    ch4.isEnabled = false
 
                     // checking if there are more question
                     if (currentPosition >= questionList!!.size) {
