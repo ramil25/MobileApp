@@ -43,16 +43,16 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="10dp"
-        android:onClick="pagsusulit"
-        android:text="Pagsusulit"
-        android:textSize="24sp"
-        app:backgroundTint="@android:color/holo_blue_light"
+        android:onClick="quizInfoScores"
+        android:text="Mga resulta ng pagsasanay"
+        android:textSize="18sp"
+        app:backgroundTint="#CA976E"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button3" />
+        app:layout_constraintTop_toBottomOf="@+id/button2" />
 
     <Button
         android:id="@+id/button3"
@@ -61,14 +61,14 @@
         android:layout_marginStart="10dp"
         android:layout_marginTop="18dp"
         android:layout_marginEnd="10dp"
-        android:text="Isara"
         android:onClick="isara"
+        android:text="Isara"
         android:textSize="24sp"
         app:backgroundTint="@color/design_default_color_error"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.47"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button2" />
+        app:layout_constraintTop_toBottomOf="@+id/button4" />
 
     <ImageView
         android:id="@+id/imageView"

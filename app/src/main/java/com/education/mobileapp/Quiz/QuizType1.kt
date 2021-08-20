@@ -5,15 +5,22 @@ import android.graphics.Color
 import android.graphics.Typeface
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.View
-import android.widget.ProgressBar
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.core.content.ContextCompat
+import com.education.mobileapp.KwarterListAdapter
+import com.education.mobileapp.QuarterList
 import com.education.mobileapp.R
 import kotlinx.android.synthetic.main.activity_quiz.*
+import kotlinx.android.synthetic.main.activity_quiz.ch1
+import kotlinx.android.synthetic.main.activity_quiz.ch2
+import kotlinx.android.synthetic.main.activity_quiz.progressBar
+import kotlinx.android.synthetic.main.activity_quiz.qNum
+import kotlinx.android.synthetic.main.activity_quiz.questionTV
+import kotlinx.android.synthetic.main.activity_quiz.quizNumTV
+import kotlinx.android.synthetic.main.activity_quiz.submitBTN
 
 class QuizType1 : AppCompatActivity(), View.OnClickListener {
 
@@ -22,14 +29,27 @@ class QuizType1 : AppCompatActivity(), View.OnClickListener {
     private var selectedChoicePosition: Int = 0
     private var correctAnswers: Int = 0
     private var pagsasanayNum: Int = 0
+    private var kwarter: Int = 0
+    private var suplemental: Int = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         supportActionBar!!.hide()
         setContentView(R.layout.activity_quiz)
-        // retrieving constants of questions
-        questionList = Constants.getQuestions()
 
+        val title: String = KwarterListAdapter.topic_name
+        // retrieving constants of questions
+        when {
+            title=="Suplemental 1" && QuarterList.kwarter_label=="Ika-unang Kwarter" -> {
+                questionList = Constants.getQuestions()
+
+                // getting quiz info and display it )
+                pagsasanayNum = 1
+                quizNumTV.text = pagsasanayNum.toString()
+                kwarter = 1
+                suplemental = 1
+            }
+        }
         // app dialog for panuto
         val builder = AlertDialog.Builder(this)
         builder.setTitle("Panuto")
@@ -40,10 +60,6 @@ class QuizType1 : AppCompatActivity(), View.OnClickListener {
 
         // setting question
         setQuestion()
-
-        // getting pagsasanay number and display it
-        pagsasanayNum = Constants.PAGSASANAY
-        quizNumTV.text = pagsasanayNum.toString()
 
         // on click listeners
         ch1.setOnClickListener(this)
@@ -66,7 +82,8 @@ class QuizType1 : AppCompatActivity(), View.OnClickListener {
 
         // progress bar and text view logic
         progressBar.progress = currentPosition
-        qNum.text = "$currentPosition" + "/" + progressBar.max
+        progressBar.max = questionList!!.size.toString().toInt()
+        qNum.text = "$currentPosition" + " / " + questionList!!.size
 
         // getting question and displaying it
         questionTV.text = question!!.question
@@ -117,8 +134,12 @@ class QuizType1 : AppCompatActivity(), View.OnClickListener {
                         currentPosition++
                     } else if (submitBTN.text == "Resulta") {
                         val i = Intent(this, ResultActivity::class.java)
-                        i.putExtra(Constants.CORRECT_ANSWERS, correctAnswers)
-                        i.putExtra(Constants.TOTAL_QUESTIONS, questionList!!.size)
+                        submitBTN.visibility = View.INVISIBLE
+                        i.putExtra(KWARTER, kwarter)
+                        i.putExtra(SUPLEMENTAL, suplemental)
+                        i.putExtra(PAGSASANAY, pagsasanayNum)
+                        i.putExtra(CORRECT_ANSWERS, correctAnswers)
+                        i.putExtra(TOTAL_QUESTIONS, questionList!!.size)
 
                         startActivity(i)
                     } else if (submitBTN.text == "Sagutan") {
@@ -148,6 +169,7 @@ class QuizType1 : AppCompatActivity(), View.OnClickListener {
 
                     // checking if there are more question
                     if (currentPosition >= questionList!!.size) {
+                        submitBTN.setBackgroundColor(Color.parseColor("#03A9F4"))
                         submitBTN.text = "Resulta"
                     } else {
                         submitBTN.text = "Susunod"

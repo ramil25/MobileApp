@@ -6,7 +6,8 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import com.education.mobileapp.Quiz.QuizType1
+import com.education.mobileapp.Quiz.QuizzesScores
+
 
 
 class MainActivity : AppCompatActivity() {
@@ -41,8 +42,8 @@ class MainActivity : AppCompatActivity() {
         exitApp.show()
     }
 
-    fun pagsusulit(view: View) {
-        val i = Intent(context, QuizType1::class.java)
+    fun quizInfoScores(view: View) {
+        val i = Intent(context, QuizzesScores::class.java)
         startActivity(i)
     }
 }

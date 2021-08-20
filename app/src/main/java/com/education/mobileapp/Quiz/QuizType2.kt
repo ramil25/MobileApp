@@ -9,8 +9,12 @@ import android.view.View
 import android.widget.TextView
 import android.widget.Toast
 import androidx.core.content.ContextCompat
+import com.education.mobileapp.KwarterListAdapter
+import com.education.mobileapp.QuarterList
 import com.education.mobileapp.R
 import kotlinx.android.synthetic.main.activity_quiz_type2.*
+import kotlinx.android.synthetic.main.activity_quiz_type2.ch1
+import kotlinx.android.synthetic.main.activity_quiz_type2.ch2
 
 class QuizType2 : AppCompatActivity(), View.OnClickListener {
 
@@ -19,17 +23,30 @@ class QuizType2 : AppCompatActivity(), View.OnClickListener {
     private var selectedChoicePosition: Int = 0
     private var correctAnswers: Int = 0
     private var pagsasanayNum: Int = 0
+    private var kwart: Int = 0
+    private var supl: Int = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         supportActionBar!!.hide()
-        // retrieving constants of questions
-        questionList = Constants2.getQuestion()
         setContentView(R.layout.activity_quiz_type2)
+
+        val title: String = KwarterListAdapter.topic_name
+        when {
+           title=="Suplemental 2" && QuarterList.kwarter_label=="Ika-unang Kwarter" -> {
+                // retrieving constants of questions
+                questionList = Constants2.getQuestion()
+                // getting quiz info number and display it
+                kwart = 1
+                supl = 2
+                pagsasanayNum = 1
+                quizNumTV1.text = pagsasanayNum.toString()
+            }
+        }
 
         ch1.setOnClickListener(this)
         ch2.setOnClickListener(this)
-        submitBTN.setOnClickListener(this)
+        submitBTN1.setOnClickListener(this)
 
         setQuestion()
     }
@@ -42,19 +59,23 @@ class QuizType2 : AppCompatActivity(), View.OnClickListener {
             R.id.ch2 -> {
                 selectedChoiceView(ch2, 2)
             }
-            R.id.submitBTN -> {
+            R.id.submitBTN1 -> {
                 if (selectedChoicePosition == 0) {
 
                     // checking if choices are selected
-                    if (submitBTN.text == "Susunod") {
+                    if (submitBTN1.text == "Susunod") {
                         currentPosition++
-                    } else if (submitBTN.text == "Resulta") {
+                    } else if (submitBTN1.text == "Resulta") {
                         val i = Intent(this, ResultActivity::class.java)
-                        i.putExtra(Constants2.CORRECT_ANSWERS, correctAnswers)
-                        i.putExtra(Constants2.TOTAL_QUESTIONS, questionList!!.size)
+                        submitBTN1.visibility = View.INVISIBLE
+                        i.putExtra(KWARTER, kwart)
+                        i.putExtra(SUPLEMENTAL, supl)
+                        i.putExtra(PAGSASANAY, pagsasanayNum)
+                        i.putExtra(CORRECT_ANSWERS, correctAnswers)
+                        i.putExtra(TOTAL_QUESTIONS, questionList!!.size)
 
                         startActivity(i)
-                    } else if (submitBTN.text == "Sagutan") {
+                    } else if (submitBTN1.text == "Sagutan") {
                         Toast.makeText(this, "Pakiusap pumili ng sagot.", Toast.LENGTH_LONG).show()
                     }
                     // setting another set of question
@@ -62,7 +83,7 @@ class QuizType2 : AppCompatActivity(), View.OnClickListener {
                         currentPosition <= questionList!!.size -> {
                             setQuestion()
                             // reset button text
-                            submitBTN.text = "Sagutan"
+                            submitBTN1.text = "Sagutan"
                         }
                     }
                 } else {
@@ -81,9 +102,10 @@ class QuizType2 : AppCompatActivity(), View.OnClickListener {
 
                     // checking if there are more question
                     if (currentPosition >= questionList!!.size) {
-                        submitBTN.text = "Resulta"
+                        submitBTN1.setBackgroundColor(Color.parseColor("#03A9F4"))
+                        submitBTN1.text = "Resulta"
                     } else {
-                        submitBTN.text = "Susunod"
+                        submitBTN1.text = "Susunod"
                     }
                     selectedChoicePosition = 0
                 }
@@ -99,15 +121,16 @@ class QuizType2 : AppCompatActivity(), View.OnClickListener {
 
         // checking if no more question then changing button text
         if (currentPosition != questionList!!.size) {
-            submitBTN.text = "Sagutan"
+            submitBTN1.text = "Sagutan"
         }
 
         // progress bar and text view logic
-        progressBar.progress = currentPosition
-        qNum.text = "$currentPosition" + "/" + progressBar.max
+        progressBar1.progress = currentPosition
+        progressBar1.max = questionList!!.size.toString().toInt()
+        qNum1.text = "$currentPosition" + " / " + questionList!!.size
 
         // getting question and displaying it
-        questionTV.text = question!!.question
+        questionTV1.text = question!!.question
 
         // getting choices and displaying it
         ch1.text = question.choice1
@@ -144,7 +167,7 @@ class QuizType2 : AppCompatActivity(), View.OnClickListener {
     private fun selectedChoiceView(tv: TextView, selectedChoiceNum: Int) {
         // reset everything to default
         defaultChoiceView()
-        if (submitBTN.text == "Sagutan") {
+        if (submitBTN1.text == "Sagutan") {
             selectedChoicePosition = selectedChoiceNum
         }
 

@@ -55,15 +55,18 @@ class Pdfview : AppCompatActivity() {
             R.id.pagsusulitBTN -> {
 
                 val title: String = KwarterListAdapter.topic_name
-                if(title=="Suplemental 1" && QuarterList.kwarter_label=="Ika-unang Kwarter") {
-                    val intent = Intent(this, QuizType1::class.java)
-                    startActivity(intent)
-                }
-                else if (title=="Suplemental 2" && QuarterList.kwarter_label=="Ika-unang Kwarter") {
-                    val intent = Intent(this, QuizType2::class.java)
-                    startActivity(intent)
-                }
 
+                // the direction of quizzes
+                when {
+                    title=="Suplemental 1" && QuarterList.kwarter_label=="Ika-unang Kwarter" -> {
+                        val intent = Intent(this, QuizType1::class.java)
+                        startActivity(intent)
+                    }
+                    title=="Suplemental 2" && QuarterList.kwarter_label=="Ika-unang Kwarter" -> {
+                        val intent = Intent(this, QuizType2::class.java)
+                        startActivity(intent)
+                    }
+                }
                 return true
 
             }

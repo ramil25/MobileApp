@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MobileApp">
         <activity
+            android:name=".Quiz.QuizType3"
+            android:exported="true" />
+        <activity
             android:name=".Quiz.QuizType2"
             android:exported="true" />
         <activity
