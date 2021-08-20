@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#8ADAD6CD"
-    tools:context=".Quiz.QuizType1">
+    tools:context=".Quiz.QuizType3">
 
     <TextView
         android:id="@+id/textView"
@@ -22,7 +21,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/quizNumTV"
+        android:id="@+id/quizNumTV2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
@@ -36,7 +35,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/qNum"
+        android:id="@+id/qNum2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="44dp"
@@ -48,7 +47,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ProgressBar
-        android:id="@+id/progressBar"
+        android:id="@+id/progressBar2"
         style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="246dp"
         android:layout_height="8dp"
@@ -56,34 +55,52 @@
         android:progress="0"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.204"
-        app:layout_constraintStart_toEndOf="@+id/qNum"
+        app:layout_constraintStart_toEndOf="@+id/qNum2"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+    <EditText
+        android:id="@+id/answerET"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="96dp"
+        android:background="@drawable/edit_text_border"
+        android:ems="10"
+        android:fontFamily="sans-serif-medium"
+        android:gravity="center"
+        android:hint="Ilagay ang sagot dito"
+        android:inputType="textPersonName"
+        android:padding="10dp"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/textView" />
 
     <ScrollView
         android:id="@+id/scrollView2"
         android:layout_width="0dp"
-        android:layout_height="230dp"
-        android:layout_marginTop="52dp"
+        android:layout_height="300dp"
+        android:layout_marginTop="68dp"
         android:background="@drawable/sv_border"
         android:fillViewport="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView">
+        app:layout_constraintTop_toTopOf="@+id/answerET">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
             <TextView
-                android:id="@+id/questionTV"
+                android:id="@+id/questionTV2"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="10sp"
                 android:fontFamily="casual"
                 android:gravity="center"
                 android:scrollbars="vertical"
-                android:text="Typically, when an aty s Typically, when an accessibility s Typically, when an accessibility s Typically, when an accessibility s Typically, when an accessibility s Typically, when an accessibility s Typicasibility s  Typically, when an aty s Typically, when an accessibility s Typically, when an accessibility s Typically, when an accessibility s Typically, when an accessibility s Typically, when an accessibility s Typicasibility s "
+                android:text="Typically, when an aty s Typically, when an accessibility s Typically, when an accessibility s Typically, when an accessibility s Typically, when an accessibility s Typically, when an accessibility s Typicasibility s  Typically, when an aty s Typically, when an accessibility s Typically, when an accessibility s Ts Typic"
                 android:textColor="#ffffff"
                 android:textSize="20sp"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -94,73 +111,47 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 
-    <TextView
-        android:id="@+id/ch1"
-        android:layout_width="289dp"
-        android:layout_height="43dp"
-        android:layout_marginTop="20dp"
-        android:background="@drawable/default_option_border_bg"
-        android:fontFamily="sans-serif-medium"
-        android:gravity="center"
-        android:text="Choice 1"
-        android:textColorHint="#292828"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/scrollView2" />
-
-    <TextView
-        android:id="@+id/ch2"
-        android:layout_width="289dp"
-        android:layout_height="43dp"
-        android:layout_marginTop="60dp"
-        android:background="@drawable/default_option_border_bg"
-        android:fontFamily="sans-serif-medium"
-        android:gravity="center"
-        android:text="Choice 2"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/ch1" />
-
-    <TextView
-        android:id="@+id/ch3"
-        android:layout_width="289dp"
-        android:layout_height="43dp"
-        android:layout_marginTop="60dp"
-        android:background="@drawable/default_option_border_bg"
-        android:fontFamily="sans-serif-medium"
-        android:gravity="center"
-        android:text="Choice 3"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/ch2" />
-
-    <TextView
-        android:id="@+id/ch4"
-        android:layout_width="289dp"
-        android:layout_height="43dp"
-        android:layout_marginTop="60dp"
-        android:background="@drawable/default_option_border_bg"
-        android:fontFamily="sans-serif-medium"
-        android:gravity="center"
-        android:text="Choice 4"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/ch3" />
-
     <Button
-        android:id="@+id/submitBTN"
+        android:id="@+id/submitBTN2"
         android:layout_width="219dp"
         android:layout_height="51dp"
-        android:layout_marginTop="52dp"
+        android:layout_marginTop="60dp"
         android:fontFamily="sans-serif-medium"
         android:text="Sagutan"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/ch4" />
+        app:layout_constraintTop_toTopOf="@+id/correctAnswerTV" />
+
+    <Button
+        android:id="@+id/resultBTN"
+        android:layout_width="219dp"
+        android:layout_height="51dp"
+        android:layout_marginTop="60dp"
+        android:fontFamily="sans-serif-medium"
+        android:text="Resulta"
+        android:textSize="18sp"
+        android:visibility="invisible"
+        app:backgroundTint="#03A9F4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/correctAnswerTV" />
+
+    <TextView
+        android:id="@+id/correctAnswerTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:background="@android:color/holo_green_light"
+        android:fontFamily="sans-serif-medium"
+        android:padding="6dp"
+        android:text="correct"
+        android:textColor="#020307"
+        android:textSize="18sp"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/scrollView2" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

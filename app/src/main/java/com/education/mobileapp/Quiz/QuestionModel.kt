@@ -18,3 +18,9 @@ data class QuestionModel2 (
     val choice2: String,
     val correctAnswer: Int
         )
+
+data class QuestionModel3 (
+    val id: Int,
+    val queston: String,
+    val correctAnswer: String
+        )
