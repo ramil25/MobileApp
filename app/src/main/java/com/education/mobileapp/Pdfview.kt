@@ -2,24 +2,39 @@ package com.education.mobileapp
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.Menu
 import android.view.MenuItem
 import android.view.View
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.education.mobileapp.Quiz.QuizType1
+import com.education.mobileapp.Quiz.QuizType2
+import com.education.mobileapp.Quiz.QuizType4
 import com.github.barteksc.pdfviewer.PDFView
 
-
 class Pdfview : AppCompatActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_pdfview)
         val title: String = KwarterListAdapter.topic_name
         val actionBar = supportActionBar
         actionBar!!.setTitle(title)
+
         actionBar.setDisplayHomeAsUpEnabled(true)
-        val gg = findViewById<PDFView>(R.id.pdf_reader2)
-        if(title=="Suplemental 1" && QuarterList.kwarter_label=="Ika-unang Kwarter") {
-            gg.fromAsset("1_1.pdf").load()
+        val loadpdf = findViewById<PDFView>(R.id.pdf_reader2)
+        val suplemental = arrayOf("Suplemental 1","Suplemental 2","Suplemental 3","Suplemental 4","Suplemental 5")
+        val pdfs =arrayOf("1_1.pdf","1_2.pdf","1_3.pdf","1_4.pdf","1_5.pdf")
+
+        if(QuarterList.kwarter_label=="Ika-unang Kwarter") {
+            var i:Int =0
+            while (i<pdfs.size) {
+                if (title == suplemental[i]) {
+                    loadpdf.fromAsset(pdfs[i]).load()
+                    i =pdfs.size
+                }else{
+                    i++
+                }
+            }
         }
     }
         //button listener
@@ -36,9 +51,36 @@ class Pdfview : AppCompatActivity() {
                 finish()
                 true
             }
+            // selected item for button
+            R.id.pagsusulitBTN -> {
+
+                val title: String = KwarterListAdapter.topic_name
+
+                // the direction of quizzes
+                when {
+                    title=="Suplemental 1" && QuarterList.kwarter_label=="Ika-unang Kwarter" || title=="Suplemental 5" && QuarterList.kwarter_label=="Ika-unang Kwarter" -> {
+                        val intent = Intent(this, QuizType1::class.java)
+                        startActivity(intent)
+                    }
+                    title=="Suplemental 2" && QuarterList.kwarter_label=="Ika-unang Kwarter" -> {
+                        val intent = Intent(this, QuizType2::class.java)
+                        startActivity(intent)
+                    }
+                    title=="Suplemental 3" && QuarterList.kwarter_label=="Ika-unang Kwarter" || title=="Suplemental 4" && QuarterList.kwarter_label=="Ika-unang Kwarter"-> {
+                        val intent = Intent(this, QuizType4::class.java)
+                        startActivity(intent)
+                    }
+                }
+                return true
+
+            }
             else -> super.onOptionsItemSelected(item)
         }
     }
 
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.custom_item_actionbar, menu)
+        return true
+    }
 
 }

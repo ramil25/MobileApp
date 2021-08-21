@@ -9,14 +9,29 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MobileApp">
-        <activity android:name=".VideoViewer"></activity>
+        <activity
+            android:name=".Quiz.QuizType3"
+            android:exported="true" />
+        <activity
+            android:name=".Quiz.QuizType2"
+            android:exported="true" />
+        <activity
+            android:name=".Quiz.QuizzesScores"
+            android:exported="true" />
+        <activity
+            android:name=".Quiz.QuizType4"
+            android:exported="true" />
+        <activity android:name=".VideoViewer" />
         <activity android:name=".TopicList" />
         <activity android:name=".Pdfview" />
         <activity android:name=".QuarterList" />
         <activity android:name=".Layunin" />
-        <activity android:name=".Quiz.QuizActivity" android:exported="true" />
-        <activity android:name=".Quiz.ResultActivity" android:exported="true" />
-
+        <activity
+            android:name=".Quiz.QuizType1"
+            android:exported="true" />
+        <activity
+            android:name=".Quiz.ResultActivity"
+            android:exported="true" />
         <activity android:name=".SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
