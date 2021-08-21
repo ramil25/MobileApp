@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import com.education.mobileapp.KwarterListAdapter
 import com.education.mobileapp.QuarterList
 import com.education.mobileapp.R
@@ -19,14 +20,21 @@ class QuizType3 : AppCompatActivity(), View.OnClickListener {
     private var pagsasanayNum: Int = 0
     private var kwart: Int = 0
     private var supl: Int = 0
-    private var hideBTN: Int = 0
+    private var hasNextQuiz: Int = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         supportActionBar!!.hide()
         setContentView(R.layout.activity_quiz_type3)
 
+        // alert dialog builder
+        val builder = AlertDialog.Builder(this)
+        builder.setTitle("Panuto")
+        builder.setPositiveButton("Simulan") { dialog, which -> // Do nothing
+        }
+
         val title: String = KwarterListAdapter.topic_name
+
         when {
             title=="Suplemental 2" && QuarterList.kwarter_label=="Ika-unang Kwarter" -> {
                 // retrieving set of question
@@ -36,8 +44,14 @@ class QuizType3 : AppCompatActivity(), View.OnClickListener {
                 supl = 2
                 pagsasanayNum = 2
                 quizNumTV2.text = pagsasanayNum.toString()
+                hasNextQuiz = 0
+                // message of dialog
+                builder.setMessage("Punan ang mga linya nang angkop na pang – ugnay upang mabuo ang diwa ng talata." +
+                        "\n\n( Gumamit ng wastong laki at liit ng titik batay sa pangungusap )")
             }
         }
+        // showing app dialog
+        builder.show()
 
         setQuestion()
 
@@ -47,6 +61,9 @@ class QuizType3 : AppCompatActivity(), View.OnClickListener {
 
     private fun setQuestion() {
         val question = questionList!![currentPosition - 1]
+
+        // enable edit text to be use
+        answerET.isEnabled = true
 
         // checking if no more question then changing button text
         if (currentPosition <= questionList!!.size) {
@@ -58,9 +75,8 @@ class QuizType3 : AppCompatActivity(), View.OnClickListener {
         progressBar2.max = questionList!!.size.toString().toInt()
         qNum2.text = "$currentPosition" + " / " + questionList!!.size
 
-        // getting question and displaying it
-        questionTV2.text = question!!.queston
-
+        // getting question and answer then display it
+        questionTV3.text = question!!.queston
         correctAnswerTV.text = question.correctAnswer
     }
 
@@ -103,13 +119,12 @@ class QuizType3 : AppCompatActivity(), View.OnClickListener {
             }
             R.id.resultBTN -> {
                 val i = Intent(this, ResultActivity::class.java)
-                hideBTN = 1
                 i.putExtra(KWARTER, kwart)
                 i.putExtra(SUPLEMENTAL, supl)
                 i.putExtra(PAGSASANAY, pagsasanayNum)
                 i.putExtra(CORRECT_ANSWERS, correctAnswers)
                 i.putExtra(TOTAL_QUESTIONS, questionList!!.size)
-                i.putExtra(IS_HIDE, hideBTN)
+                i.putExtra(HAS_NEXT_QUIZ, hasNextQuiz)
 
                 startActivity(i)
             }
@@ -127,5 +142,8 @@ class QuizType3 : AppCompatActivity(), View.OnClickListener {
         }
         correctAnswerTV.visibility = View.VISIBLE
         currentPosition++
+
+        // disable edit text to be use
+        answerET.isEnabled = false
     }
 }

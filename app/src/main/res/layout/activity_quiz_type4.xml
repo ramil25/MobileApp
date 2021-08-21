@@ -4,10 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Quiz.QuizType3">
+    tools:context=".Quiz.QuizType4">
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
@@ -21,7 +21,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/quizNumTV2"
+        android:id="@+id/quizNumTV4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
@@ -35,7 +35,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/qNum2"
+        android:id="@+id/qNum4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="44dp"
@@ -47,7 +47,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ProgressBar
-        android:id="@+id/progressBar2"
+        android:id="@+id/progressBar3"
         style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="246dp"
         android:layout_height="8dp"
@@ -55,11 +55,11 @@
         android:progress="0"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.204"
-        app:layout_constraintStart_toEndOf="@+id/qNum2"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintStart_toEndOf="@+id/qNum4"
+        app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
     <EditText
-        android:id="@+id/answerET"
+        android:id="@+id/answerET1"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="96dp"
@@ -74,33 +74,33 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/textView" />
+        app:layout_constraintTop_toTopOf="@+id/textView4" />
 
     <ScrollView
         android:id="@+id/scrollView2"
         android:layout_width="0dp"
-        android:layout_height="300dp"
+        android:layout_height="200dp"
         android:layout_marginTop="68dp"
         android:background="@drawable/sv_border"
         android:fillViewport="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/answerET">
+        app:layout_constraintTop_toTopOf="@+id/answerET1">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
             <TextView
-                android:id="@+id/questionTV3"
+                android:id="@+id/questionTV4"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="10sp"
                 android:fontFamily="casual"
                 android:gravity="center"
                 android:scrollbars="vertical"
-                android:text="Typically, when an aty s Typically, when an accessibility s Typically, when an accessibility s Typically, when an accessibility s Typically, when an accessibility s Typically, when an accessibility s Typicasibility s  Typically, when an aty s Typically, when an accessibility s Typically, when an accessibility s Ts Typic"
+                android:text="ically, when an accessibility s Typically, when an accessibility s Typically, when an accessibility s Typically, when an accessibility s Typically, when an accessibility s Typicasibility s  Typically, when an aty s Typically Typic"
                 android:textColor="#ffffff"
                 android:textSize="20sp"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -112,36 +112,21 @@
     </ScrollView>
 
     <Button
-        android:id="@+id/submitBTN2"
-        android:layout_width="219dp"
-        android:layout_height="51dp"
-        android:layout_marginTop="60dp"
-        android:fontFamily="sans-serif-medium"
-        android:text="Sagutan"
-        android:textSize="18sp"
+        android:id="@+id/button9"
+        android:layout_width="247dp"
+        android:layout_height="62dp"
+        android:layout_marginTop="32dp"
+        android:text="Mga pamimilian"
+        app:backgroundTint="#CA976E"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/correctAnswerTV" />
-
-    <Button
-        android:id="@+id/resultBTN"
-        android:layout_width="219dp"
-        android:layout_height="51dp"
-        android:layout_marginTop="60dp"
-        android:fontFamily="sans-serif-medium"
-        android:text="Resulta"
-        android:textSize="18sp"
-        android:visibility="invisible"
-        app:backgroundTint="#03A9F4"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/correctAnswerTV" />
+        app:layout_constraintTop_toBottomOf="@+id/scrollView2" />
 
     <TextView
-        android:id="@+id/correctAnswerTV"
+        android:id="@+id/correctAnswerTV1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="116dp"
         android:background="@android:color/holo_green_light"
         android:fontFamily="sans-serif-medium"
         android:padding="6dp"
@@ -153,5 +138,31 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/scrollView2" />
+
+    <Button
+        android:id="@+id/resultBTN1"
+        android:layout_width="219dp"
+        android:layout_height="51dp"
+        android:layout_marginTop="52dp"
+        android:fontFamily="sans-serif-medium"
+        android:text="Resulta"
+        android:textSize="18sp"
+        android:visibility="invisible"
+        app:backgroundTint="#03A9F4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/correctAnswerTV1" />
+
+    <Button
+        android:id="@+id/submitBTN3"
+        android:layout_width="219dp"
+        android:layout_height="51dp"
+        android:layout_marginTop="52dp"
+        android:fontFamily="sans-serif-medium"
+        android:text="Sagutan"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/correctAnswerTV1" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
