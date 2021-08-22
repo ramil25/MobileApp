@@ -46,10 +46,10 @@ class SQLiteDBHelper(var context: Context) : SQLiteOpenHelper(context, DATABASE_
         var result = db.insert(TABLE_NAME, null,cv)
 
         if (result == -1.toLong()) {
-            Toast.makeText(context, "Failed to Insert.", Toast.LENGTH_SHORT).show()
+           // Toast.makeText(context, "Failed to Insert.", Toast.LENGTH_SHORT).show()
         }
         else {
-            Toast.makeText(context, "Quiz Info Inserted.", Toast.LENGTH_SHORT).show()
+           // Toast.makeText(context, "Quiz Info Inserted.", Toast.LENGTH_SHORT).show()
         }
     }
 

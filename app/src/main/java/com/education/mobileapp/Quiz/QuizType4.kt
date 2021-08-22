@@ -21,10 +21,12 @@ class QuizType4 : AppCompatActivity(), View.OnClickListener {
     private var pagsasanayNum: Int = 0
     private var kwart: Int = 0
     private var supl: Int = 0
+    private var hasNextQuiz: Int = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_quiz_type4)
+        supportActionBar!!.hide()
 
         // alert dialog builder
         val builder = AlertDialog.Builder(this)
@@ -54,6 +56,7 @@ class QuizType4 : AppCompatActivity(), View.OnClickListener {
                 kwart = 1
                 supl = 4
                 pagsasanayNum = 1
+                hasNextQuiz = 1
                 quizNumTV4.text = pagsasanayNum.toString()
                 // message of dialog
                 builder.setMessage("Punan ng angkop na pananda ang patlang upang mabuo ang ideya ng pahayag." +
@@ -140,6 +143,7 @@ class QuizType4 : AppCompatActivity(), View.OnClickListener {
                 i.putExtra(PAGSASANAY, pagsasanayNum)
                 i.putExtra(CORRECT_ANSWERS, correctAnswers)
                 i.putExtra(TOTAL_QUESTIONS, questionList!!.size)
+                i.putExtra(HAS_NEXT_QUIZ, hasNextQuiz)
 
                 startActivity(i)
             }
@@ -178,5 +182,11 @@ class QuizType4 : AppCompatActivity(), View.OnClickListener {
 
         // disable edit text to be use
         answerET1.isEnabled = false
+    }
+
+    // Function for not going back to previous activity
+    override fun onBackPressed() {
+        //super.onBackPressed()
+        Toast.makeText(this, "Pakiusap tapusin muna ang pagsasanay na ito", Toast.LENGTH_SHORT).show()
     }
 }

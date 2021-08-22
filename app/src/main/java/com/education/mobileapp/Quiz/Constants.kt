@@ -384,10 +384,10 @@ object Constants6 {
         val que6 = QuestionModel(
             6,
             "6. Alin sa mga sumusunod ang TOTOO sa Anapora?",
-            "Panghalip sa unahang tutukoy sa hulihan ng teksto.",
-            "Panghalip sa hulihang tumutukoy sa unahan ng teksto. ",
-            "Panghalip sa hulihang tutukoy sa hulihan ng teksto.",
-            "Panghalip sa unahang tumutukoy sa unahan ng teksto.",
+            "Panghalip sa unahang pangngalan tutukoy sa hulihan ng teksto.",
+            "Panghalip sa hulihang pangngalan tumutukoy sa unahan ng teksto. ",
+            "Panghalip sa hulihang pangngalan tutukoy sa hulihan ng teksto.",
+            "Panghalip sa unahang pangngalan tumutukoy sa unahan ng teksto.",
             2
         )
         questionsList.add(que6)
@@ -395,14 +395,14 @@ object Constants6 {
         val que7 = QuestionModel(
             7,
             "7. “Siya ay isang mapanghalinang babae. Si Mathilde ay isinilang sa angkan ng mga manunulat.” Anong kohesiyong gramatikal ang nagamit sa pangungusap?",
-            "Anapora", "Katapora", "Panghalip", "Pangalan", 2
+            "Anapora", "Katapora", "Panghalip", "Pangngalan", 2
         )
         questionsList.add(que7)
 
         val que8 = QuestionModel(
             8,
             "8. “Si Mathilde ay nagtagumpay sa gabing iyon. Siya ay nagningning sa piging.” Anong kohesiyong gramatikal ang nagamit sa pangungusap?",
-            "Anapora", "Katapora", "Panghalip", "Pangalan", 1
+            "Anapora", "Katapora", "Panghalip", "Pangngalan", 1
         )
         questionsList.add(que8)
 
@@ -416,7 +416,7 @@ object Constants6 {
         val que10 = QuestionModel(
             10,
             "10. Anong kohesiyong gramatikal ang ginamit sa pangungusap bilang 9?",
-            "Anapora", "Katapora", "Panghalip", "Pangalan", 2
+            "Anapora", "Katapora", "Panghalip", "Pangngalan", 2
         )
         questionsList.add(que10)
 

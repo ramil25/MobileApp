@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import com.education.mobileapp.KwarterListAdapter
 import com.education.mobileapp.MainActivity
 import com.education.mobileapp.QuarterList
@@ -50,16 +51,13 @@ class ResultActivity : AppCompatActivity() {
         hasNext = intent.getIntExtra(HAS_NEXT_QUIZ, 0)
         hasNextTV.text = "$hasNext"
 
-        // checking if there are more pag sasanay
-        val title: String = KwarterListAdapter.topic_name
-
 
                 // hiding button
                 if (hasNextTV.text == "1")  {
-                    imageButton.visibility = View.INVISIBLE
+                    homeBTN.visibility = View.INVISIBLE
                     button8.visibility = View.VISIBLE
                 } else {
-                    imageButton.visibility = View.VISIBLE
+                    homeBTN.visibility = View.VISIBLE
                     button8.visibility = View.INVISIBLE
                 }
     }
@@ -70,8 +68,25 @@ class ResultActivity : AppCompatActivity() {
     }
 
     fun anotherQuiz(view: View) {
-        val i = Intent(this, QuizType3::class.java)
-        startActivity(i)
+
+        // checking if there are more pag sasanay
+        val title: String = KwarterListAdapter.topic_name
+
+        when  {
+            title=="Suplemental 2" && QuarterList.kwarter_label=="Ika-unang Kwarter" -> {
+                val i = Intent(this, QuizType3::class.java)
+                startActivity(i)
+            }
+            title=="Suplemental 4" && QuarterList.kwarter_label=="Ika-unang Kwarter" -> {
+                val i = Intent(this, QuizType5::class.java)
+                startActivity(i)
+            }
+        }
+    }
+
+    // Function for not going back to previous activity
+    override fun onBackPressed() {
+        //super.onBackPressed()
     }
 
 }

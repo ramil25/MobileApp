@@ -50,7 +50,7 @@ class QuizType2 : AppCompatActivity(), View.OnClickListener {
                 supl = 2
                 pagsasanayNum = 1
                 quizNumTV1.text = pagsasanayNum.toString()
-               hasNextQuiz = 1
+                hasNextQuiz = 1
                // message of dialog
                builder.setMessage("Basahin ang sariling pagsasalaysay batay sa binasang parabula at piliin sa loob ng panaklong ang angkop na pang – ugnay.")
             }
@@ -196,5 +196,11 @@ class QuizType2 : AppCompatActivity(), View.OnClickListener {
         tv.setTextColor(Color.parseColor("#03A9F4"))
         tv.setTypeface(tv.typeface, Typeface.BOLD)
         tv.background = ContextCompat.getDrawable(this, R.drawable.selected_option_border_bg)
+    }
+
+    // Function for not going back to previous activity
+    override fun onBackPressed() {
+        //super.onBackPressed()
+        Toast.makeText(this, "Pakiusap tapusin muna ang pagsasanay na ito", Toast.LENGTH_SHORT).show()
     }
 }
