@@ -66,6 +66,7 @@
         android:layout_marginTop="52dp"
         android:background="@drawable/sv_border"
         android:fillViewport="true"
+        android:scrollbarThumbVertical="@drawable/scroll_color"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"

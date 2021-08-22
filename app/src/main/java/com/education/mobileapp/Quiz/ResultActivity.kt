@@ -50,9 +50,6 @@ class ResultActivity : AppCompatActivity() {
         hasNext = intent.getIntExtra(HAS_NEXT_QUIZ, 0)
         hasNextTV.text = "$hasNext"
 
-        // checking if there are more pag sasanay
-        val title: String = KwarterListAdapter.topic_name
-
 
                 // hiding button
                 if (hasNextTV.text == "1")  {
@@ -70,8 +67,20 @@ class ResultActivity : AppCompatActivity() {
     }
 
     fun anotherQuiz(view: View) {
-        val i = Intent(this, QuizType3::class.java)
-        startActivity(i)
+
+        // checking if there are more pag sasanay
+        val title: String = KwarterListAdapter.topic_name
+
+        when  {
+            title=="Suplemental 2" && QuarterList.kwarter_label=="Ika-unang Kwarter" -> {
+                val i = Intent(this, QuizType3::class.java)
+                startActivity(i)
+            }
+            title=="Suplemental 4" && QuarterList.kwarter_label=="Ika-unang Kwarter" -> {
+                val i = Intent(this, QuizType5::class.java)
+                startActivity(i)
+            }
+        }
     }
 
 }
