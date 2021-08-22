@@ -69,8 +69,8 @@
         android:textColor="#000000"
         android:textSize="96sp"
         app:layout_constraintBottom_toBottomOf="@+id/imageView2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.212"
+        app:layout_constraintEnd_toStartOf="@+id/scoreTV"
+        app:layout_constraintHorizontal_bias="0.913"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/imageView2" />
 
@@ -84,22 +84,9 @@
         android:textSize="96sp"
         app:layout_constraintBottom_toBottomOf="@+id/imageView2"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.787"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/scoreTV"
         app:layout_constraintTop_toTopOf="@+id/imageView2" />
-
-    <ImageButton
-        android:id="@+id/imageButton"
-        android:layout_width="95dp"
-        android:layout_height="94dp"
-        android:onClick="home"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.503"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/imageView2"
-        app:layout_constraintVertical_bias="0.846"
-        app:srcCompat="@drawable/ic_baseline_home" />
 
     <Button
         android:id="@+id/button8"
@@ -109,6 +96,18 @@
         android:onClick="anotherQuiz"
         android:text="Susunod na pagsasanay"
         android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.85" />
+
+    <Button
+        android:id="@+id/homeBTN"
+        android:layout_width="243dp"
+        android:layout_height="wrap_content"
+        android:onClick="home"
+        android:text="Bumalik sa pangunahing pamimilian"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -127,4 +126,5 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.033" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

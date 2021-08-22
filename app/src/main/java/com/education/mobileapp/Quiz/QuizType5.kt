@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import com.education.mobileapp.KwarterListAdapter
 import com.education.mobileapp.QuarterList
 import com.education.mobileapp.R
@@ -28,6 +29,8 @@ class QuizType5 : AppCompatActivity(), View.OnClickListener {
         setContentView(R.layout.activity_quiz_type5)
         supportActionBar!!.hide()
 
+
+
         // set the question
         setQuestion()
 
@@ -39,6 +42,12 @@ class QuizType5 : AppCompatActivity(), View.OnClickListener {
     // Function for setting the question
     private fun setQuestion() {
 
+        // alert dialog builder
+        val builder = AlertDialog.Builder(this)
+        builder.setTitle("Panuto")
+        builder.setPositiveButton("Simulan") { dialog, which -> // Do nothing
+        }
+
         val title: String = KwarterListAdapter.topic_name
 
         when {
@@ -49,6 +58,9 @@ class QuizType5 : AppCompatActivity(), View.OnClickListener {
                 kwart = 1
                 supl = 4
                 hasNextQuiz = 0
+                // dialog message
+                builder.setMessage("Pagsunod – sunurin ang mga hakbang sa pagluluto ng bilo – bilo. Gawing gabay ang mga salitang hudyat sa pagsusunod – sunod." +
+                        "\n\n (1 hanggang 8)")
                 // setting array of questions
                 questions = arrayOf(
                     "At sa huli, ihain ang masarap na ginataan habang mainit o puwede ring palamigin muna bago ihain.",
@@ -65,6 +77,8 @@ class QuizType5 : AppCompatActivity(), View.OnClickListener {
                 answers = arrayOf("8", "7", "4", "6", "3", "2", "5", "1")
             }
         }
+        // show app dialog
+        builder.show()
 
         // get and display the questions at text view
         que1TV.text = questions[0]
@@ -198,5 +212,11 @@ class QuizType5 : AppCompatActivity(), View.OnClickListener {
         answer6ET.isEnabled = false
         answer7ET.isEnabled = false
         answer8ET.isEnabled = false
+    }
+
+    // Function for not going back to previous activity
+    override fun onBackPressed() {
+        //super.onBackPressed()
+        Toast.makeText(this, "Pakiusap tapusin muna ang pagsasanay na ito", Toast.LENGTH_SHORT).show()
     }
 }

@@ -197,4 +197,10 @@ class QuizType2 : AppCompatActivity(), View.OnClickListener {
         tv.setTypeface(tv.typeface, Typeface.BOLD)
         tv.background = ContextCompat.getDrawable(this, R.drawable.selected_option_border_bg)
     }
+
+    // Function for not going back to previous activity
+    override fun onBackPressed() {
+        //super.onBackPressed()
+        Toast.makeText(this, "Pakiusap tapusin muna ang pagsasanay na ito", Toast.LENGTH_SHORT).show()
+    }
 }

@@ -183,4 +183,10 @@ class QuizType4 : AppCompatActivity(), View.OnClickListener {
         // disable edit text to be use
         answerET1.isEnabled = false
     }
+
+    // Function for not going back to previous activity
+    override fun onBackPressed() {
+        //super.onBackPressed()
+        Toast.makeText(this, "Pakiusap tapusin muna ang pagsasanay na ito", Toast.LENGTH_SHORT).show()
+    }
 }

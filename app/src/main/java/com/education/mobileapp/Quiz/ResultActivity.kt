@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import com.education.mobileapp.KwarterListAdapter
 import com.education.mobileapp.MainActivity
 import com.education.mobileapp.QuarterList
@@ -53,10 +54,10 @@ class ResultActivity : AppCompatActivity() {
 
                 // hiding button
                 if (hasNextTV.text == "1")  {
-                    imageButton.visibility = View.INVISIBLE
+                    homeBTN.visibility = View.INVISIBLE
                     button8.visibility = View.VISIBLE
                 } else {
-                    imageButton.visibility = View.VISIBLE
+                    homeBTN.visibility = View.VISIBLE
                     button8.visibility = View.INVISIBLE
                 }
     }
@@ -81,6 +82,11 @@ class ResultActivity : AppCompatActivity() {
                 startActivity(i)
             }
         }
+    }
+
+    // Function for not going back to previous activity
+    override fun onBackPressed() {
+        //super.onBackPressed()
     }
 
 }
