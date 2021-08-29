@@ -62,7 +62,7 @@
         android:id="@+id/answerET1"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="96dp"
+        android:layout_marginTop="20dp"
         android:background="@drawable/edit_text_border"
         android:ems="10"
         android:fontFamily="sans-serif-medium"
@@ -74,20 +74,20 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/textView4" />
+        app:layout_constraintTop_toBottomOf="@+id/scrollView2" />
 
     <ScrollView
         android:id="@+id/scrollView2"
         android:layout_width="0dp"
         android:layout_height="200dp"
-        android:layout_marginTop="68dp"
+        android:layout_marginTop="64dp"
         android:background="@drawable/sv_border"
         android:fillViewport="true"
         android:scrollbarThumbVertical="@drawable/scroll_color"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/answerET1">
+        app:layout_constraintTop_toBottomOf="@+id/textView4">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -116,18 +116,18 @@
         android:id="@+id/button9"
         android:layout_width="247dp"
         android:layout_height="62dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="24dp"
         android:text="Mga pamimilian"
         app:backgroundTint="#CA976E"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/scrollView2" />
+        app:layout_constraintTop_toBottomOf="@+id/answerET1" />
 
     <TextView
         android:id="@+id/correctAnswerTV1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="116dp"
+        android:layout_marginTop="32dp"
         android:background="@android:color/holo_green_light"
         android:fontFamily="sans-serif-medium"
         android:padding="6dp"
@@ -138,13 +138,13 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/scrollView2" />
+        app:layout_constraintTop_toBottomOf="@+id/submitBTN3" />
 
     <Button
         android:id="@+id/resultBTN1"
         android:layout_width="219dp"
         android:layout_height="51dp"
-        android:layout_marginTop="52dp"
+        android:layout_marginTop="20dp"
         android:fontFamily="sans-serif-medium"
         android:text="Resulta"
         android:textSize="18sp"
@@ -152,18 +152,30 @@
         app:backgroundTint="#03A9F4"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/correctAnswerTV1" />
+        app:layout_constraintTop_toBottomOf="@+id/button9" />
 
     <Button
         android:id="@+id/submitBTN3"
         android:layout_width="219dp"
         android:layout_height="51dp"
-        android:layout_marginTop="52dp"
+        android:layout_marginTop="19dp"
         android:fontFamily="sans-serif-medium"
         android:text="Sagutan"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/correctAnswerTV1" />
+        app:layout_constraintTop_toBottomOf="@+id/button9" />
+
+    <ImageView
+        android:id="@+id/correctIMG3"
+        android:layout_width="80dp"
+        android:layout_height="65dp"
+        android:layout_marginTop="8dp"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/correctAnswerTV1"
+        app:srcCompat="@drawable/image_correct" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

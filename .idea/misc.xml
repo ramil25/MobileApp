@@ -3,20 +3,12 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Projects/MobileApp/app/src/main/res/layout/activity_main.xml" value="0.1417763157894737" />
-        <entry key="..\:/Projects/MobileApp/app/src/main/res/layout/activity_pdfview.xml" value="0.1417763157894737" />
-        <entry key="..\:/Projects/MobileApp/app/src/main/res/layout/activity_quarter_list.xml" value="0.1" />
-        <entry key="..\:/Projects/MobileApp/app/src/main/res/layout/activity_topic_list.xml" value="0.1" />
-        <entry key="..\:/Projects/MobileApp/app/src/main/res/layout/item_view.xml" value="0.1" />
-        <entry key="..\:/Users/Admin/AndroidStudioProjects/MobileApp/app/src/main/res/drawable/scroll_color.xml" value="0.2890625" />
-        <entry key="..\:/Users/Admin/AndroidStudioProjects/MobileApp/app/src/main/res/layout/activity_quiz.xml" value="0.2657407407407407" />
-        <entry key="..\:/Users/Admin/AndroidStudioProjects/MobileApp/app/src/main/res/layout/activity_quiz_type2.xml" value="0.2657407407407407" />
-        <entry key="..\:/Users/Admin/AndroidStudioProjects/MobileApp/app/src/main/res/layout/activity_quiz_type3.xml" value="0.26666666666666666" />
-        <entry key="..\:/Users/Admin/AndroidStudioProjects/MobileApp/app/src/main/res/layout/activity_quiz_type4.xml" value="0.27291666666666664" />
-        <entry key="..\:/Users/Admin/AndroidStudioProjects/MobileApp/app/src/main/res/layout/activity_quiz_type5.xml" value="0.33" />
-        <entry key="..\:/Users/Admin/AndroidStudioProjects/MobileApp/app/src/main/res/layout/activity_quizzes_scores.xml" value="0.26666666666666666" />
-        <entry key="..\:/Users/Admin/AndroidStudioProjects/MobileApp/app/src/main/res/layout/activity_result.xml" value="0.33" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/MobileApp/app/src/main/res/layout/activity_result.xml" value="0.10260416666666666" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/MobileApp/app/src/main/res/layout/choices_dialog.xml" value="0.27291666666666664" />
+        <entry key="..\:/Users/Atah/AndroidStudioProjects/MobileApp/app/src/main/res/layout/activity_quiz_type4.xml" value="0.1" />
+        <entry key="..\:/Users/Atah/AndroidStudioProjects/MobileApp/app/src/main/res/layout/activity_result.xml" value="0.1" />
+        <entry key="..\:/Users/Atah/AndroidStudioProjects/MobileApp/app/src/main/res/layout/average_score_dialog.xml" value="0.1" />
+        <entry key="..\:/Users/Atah/AndroidStudioProjects/MobileApp/app/src/main/res/layout/perfect_score_dialog.xml" value="0.1" />
       </map>
     </option>
   </component>

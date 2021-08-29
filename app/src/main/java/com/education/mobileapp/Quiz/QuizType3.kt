@@ -2,6 +2,7 @@ package com.education.mobileapp.Quiz
 
 import android.content.Intent
 import android.graphics.Color
+import android.media.MediaPlayer
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -21,6 +22,9 @@ class QuizType3 : AppCompatActivity(), View.OnClickListener {
     private var kwart: Int = 0
     private var supl: Int = 0
     private var hasNextQuiz: Int = 0
+
+    // variable for releasing and resetting media player
+    private var mediaRelease: MediaPlayer? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -78,9 +82,20 @@ class QuizType3 : AppCompatActivity(), View.OnClickListener {
         // getting question and answer then display it
         questionTV3.text = question!!.queston
         correctAnswerTV.text = question.correctAnswer
+
+        correctIMG2.visibility = View.INVISIBLE
     }
 
     override fun onClick(v: View?) {
+
+        // variable for making sounds
+        val buttonSound = MediaPlayer.create(this, R.raw.button_click_sound)
+        val correctSound = MediaPlayer.create(this, R.raw.correct_sound)
+        val wrongSound = MediaPlayer.create(this, R.raw.wrong_sound)
+
+        // starting clicked sound
+        buttonSound.start()
+
         when (v?.id) {
             R.id.submitBTN2 -> {
 
@@ -94,6 +109,10 @@ class QuizType3 : AppCompatActivity(), View.OnClickListener {
                                 answerET.setTextColor(Color.parseColor("#03A9F4"))
                                 correctAnswers++
                                 setNextQuestion()
+                                correctIMG2.visibility = View.VISIBLE
+
+                                // starting correct sound
+                                correctSound.start()
                             }
                             // check if is empty
                             else if (answerET.text.toString() == "") {
@@ -106,6 +125,9 @@ class QuizType3 : AppCompatActivity(), View.OnClickListener {
                                 answerET.clearFocus()
                                 answerET.setBackgroundResource(R.drawable.wrong_option_border_bg)
                                 setNextQuestion()
+
+                                // starting wrong sound
+                                wrongSound.start()
                             }
                         }
                         else {
@@ -118,6 +140,10 @@ class QuizType3 : AppCompatActivity(), View.OnClickListener {
                         }
             }
             R.id.resultBTN -> {
+                // reset and release media player
+                mediaRelease?.reset()
+                mediaRelease?.release()
+
                 val i = Intent(this, ResultActivity::class.java)
                 i.putExtra(KWARTER, kwart)
                 i.putExtra(SUPLEMENTAL, supl)

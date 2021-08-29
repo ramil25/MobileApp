@@ -1,15 +1,18 @@
 package com.education.mobileapp.Quiz
 
 import android.content.Intent
+import android.media.MediaPlayer
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import com.education.mobileapp.KwarterListAdapter
 import com.education.mobileapp.MainActivity
 import com.education.mobileapp.QuarterList
 import com.education.mobileapp.R
 import kotlinx.android.synthetic.main.activity_result.*
+import kotlinx.android.synthetic.main.perfect_score_dialog.view.*
 
 class ResultActivity : AppCompatActivity() {
 
@@ -52,14 +55,31 @@ class ResultActivity : AppCompatActivity() {
         hasNextTV.text = "$hasNext"
 
 
-                // hiding button
-                if (hasNextTV.text == "1")  {
-                    homeBTN.visibility = View.INVISIBLE
-                    button8.visibility = View.VISIBLE
-                } else {
-                    homeBTN.visibility = View.VISIBLE
-                    button8.visibility = View.INVISIBLE
-                }
+        // hiding button
+        if (hasNextTV.text == "1")  {
+            homeBTN.visibility = View.INVISIBLE
+            button8.visibility = View.VISIBLE
+        } else {
+            homeBTN.visibility = View.VISIBLE
+            button8.visibility = View.INVISIBLE
+        }
+
+        // showing different dialog depends on score
+        if (correct == 10) {
+            perfectView()
+            val yeheySound = MediaPlayer.create(this, R.raw.yehey_sound)
+            yeheySound.start()
+        }
+        else if (correct > 3 && correct < 10) {
+            averageView()
+            // variables for making sounds
+            val clapSound = MediaPlayer.create(this, R.raw.clap_sound)
+            clapSound.start()
+        }
+        else {
+            Toast.makeText(this, "Pagbutihan pa ang pag aaral.", Toast.LENGTH_SHORT).show()
+        }
+
     }
     // Function for going back to home
     fun home(view: View) {
@@ -89,4 +109,28 @@ class ResultActivity : AppCompatActivity() {
         //super.onBackPressed()
     }
 
+    // Function for showing images of results
+    private fun perfectView() {
+        val view = View.inflate(this, R.layout.perfect_score_dialog, null)
+        val builder = AlertDialog.Builder(this)
+        builder.setView(view)
+
+        val dialog = builder.create()
+        dialog.show()
+        dialog.window?.setBackgroundDrawableResource(android.R.color.transparent)
+
+        view.button10.setOnClickListener { dialog.dismiss() }
+    }
+
+    private fun averageView() {
+        val view = View.inflate(this, R.layout.average_score_dialog, null)
+        val builder = AlertDialog.Builder(this)
+        builder.setView(view)
+
+        val dialog = builder.create()
+        dialog.show()
+        dialog.window?.setBackgroundDrawableResource(android.R.color.transparent)
+
+        view.button10.setOnClickListener { dialog.dismiss() }
+    }
 }
