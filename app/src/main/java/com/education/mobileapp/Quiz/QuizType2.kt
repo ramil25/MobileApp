@@ -3,6 +3,7 @@ package com.education.mobileapp.Quiz
 import android.content.Intent
 import android.graphics.Color
 import android.graphics.Typeface
+import android.media.MediaPlayer
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -27,6 +28,9 @@ class QuizType2 : AppCompatActivity(), View.OnClickListener {
     private var hasNextQuiz = 0
     private var kwart: Int = 0
     private var supl: Int = 0
+
+    // variable for releasing and resetting media player
+    private var mediaRelease: MediaPlayer? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -61,11 +65,21 @@ class QuizType2 : AppCompatActivity(), View.OnClickListener {
         ch1.setOnClickListener(this)
         ch2.setOnClickListener(this)
         submitBTN1.setOnClickListener(this)
+        resultBTN6.setOnClickListener(this)
 
         setQuestion()
     }
 
     override fun onClick(v: View?) {
+
+        // variable of making sound
+        val buttonSound = MediaPlayer.create(this, R.raw.button_click_sound)
+        val correctSound = MediaPlayer.create(this, R.raw.correct_sound)
+        val wrongSound = MediaPlayer.create(this, R.raw.wrong_sound)
+
+        // start button sound when clicked
+        buttonSound.start()
+
         when (v?.id) {
             R.id.ch1 -> {
                 selectedChoiceView(ch1, 1)
@@ -79,18 +93,8 @@ class QuizType2 : AppCompatActivity(), View.OnClickListener {
                     // checking if choices are selected
                     if (submitBTN1.text == "Susunod") {
                         currentPosition++
-                    } else if (submitBTN1.text == "Resulta") {
-                        val i = Intent(this, ResultActivity::class.java)
-                        submitBTN1.visibility = View.INVISIBLE
-                        i.putExtra(KWARTER, kwart)
-                        i.putExtra(SUPLEMENTAL, supl)
-                        i.putExtra(PAGSASANAY, pagsasanayNum)
-                        i.putExtra(CORRECT_ANSWERS, correctAnswers)
-                        i.putExtra(TOTAL_QUESTIONS, questionList!!.size)
-                        i.putExtra(HAS_NEXT_QUIZ, hasNextQuiz)
-
-                        startActivity(i)
-                    } else if (submitBTN1.text == "Sagutan") {
+                    }
+                    else if (submitBTN1.text == "Sagutan") {
                         Toast.makeText(this, "Pakiusap pumili ng sagot.", Toast.LENGTH_LONG).show()
                     }
                     // setting another set of question
@@ -107,11 +111,17 @@ class QuizType2 : AppCompatActivity(), View.OnClickListener {
                     // displaying wrong and correct answer
                     if (question!!.correctAnswer != selectedChoicePosition) {
                         answerView(selectedChoicePosition, R.drawable.wrong_option_border_bg)
+                        // starting wrong sound
+                        wrongSound.start()
 
                         // for user doesn't cheat
                         selectedChoicePosition = 0
                     } else {
                         correctAnswers++
+                        correctIMG1.visibility = View.VISIBLE
+
+                        // starting correct sound
+                        correctSound.start()
                     }
                     answerView(question.correctAnswer, R.drawable.correct_option_border_bg)
                     //disable choices to be clicked
@@ -120,13 +130,29 @@ class QuizType2 : AppCompatActivity(), View.OnClickListener {
 
                     // checking if there are more question
                     if (currentPosition >= questionList!!.size) {
-                        submitBTN1.setBackgroundColor(Color.parseColor("#03A9F4"))
-                        submitBTN1.text = "Resulta"
+                        resultBTN6.visibility = View.VISIBLE
+                        submitBTN1.visibility = View.INVISIBLE
                     } else {
                         submitBTN1.text = "Susunod"
                     }
                     selectedChoicePosition = 0
                 }
+            }
+            R.id.resultBTN6 -> {
+                // reset and release sound
+                mediaRelease?.reset()
+                mediaRelease?.release()
+
+                val i = Intent(this, ResultActivity::class.java)
+                submitBTN1.visibility = View.INVISIBLE
+                i.putExtra(KWARTER, kwart)
+                i.putExtra(SUPLEMENTAL, supl)
+                i.putExtra(PAGSASANAY, pagsasanayNum)
+                i.putExtra(CORRECT_ANSWERS, correctAnswers)
+                i.putExtra(TOTAL_QUESTIONS, questionList!!.size)
+                i.putExtra(HAS_NEXT_QUIZ, hasNextQuiz)
+
+                startActivity(i)
             }
         }
     }
@@ -157,6 +183,8 @@ class QuizType2 : AppCompatActivity(), View.OnClickListener {
         // getting choices and displaying it
         ch1.text = question.choice1
         ch2.text = question.choice2
+
+        correctIMG1.visibility = View.INVISIBLE
     }
 
     // Function of displaying default view of choices

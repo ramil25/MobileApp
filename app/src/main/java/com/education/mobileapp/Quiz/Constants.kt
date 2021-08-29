@@ -1,5 +1,11 @@
 package com.education.mobileapp.Quiz
 
+import android.graphics.Typeface
+import android.text.Spannable
+import android.text.SpannableString
+import android.text.style.StyleSpan
+
+
 // global variables
 const val CORRECT_ANSWERS: String = "correct_answers"
 const val TOTAL_QUESTIONS: String = "total_questions"
@@ -45,7 +51,7 @@ object Constants {
 
         val que4 = QuestionModel (
             4,
-            "4. Ang pokus ng pandiwang ginamit sa bilang 3 ay __________.",
+            "4. Sa pangungusap na “Ang sama-samang panalangin ng bawat isa ay ipanlalaban sa kumakalat na virus sa mundo,” ano ang pokus ng pandiwa?",
             "Layon", "Kagamitan ", "Tagaganap ", "Tagatanggap ", 2
         )
 
@@ -53,8 +59,8 @@ object Constants {
 
         val que5 = QuestionModel (
             5,
-            "5. Ang paksang tinutukoy sa bilang 3 ay __________.",
-            "Tamang disiplina ", "Ipanlalaban", "Sakit", "Mundo", 1
+            "5. Sa pangungusap na “Ang buong bansa ay nagsisikap para sa makataong layunin ng nagkakaisang bayan,” ano ang gamit ng pandiwa?",
+            "Aksiyon, kilos o galaw", "Ipanlalaban", "Sakit", "Mundo", 1
         )
 
         questionsList.add(que5)

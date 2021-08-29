@@ -3,9 +3,9 @@ package com.education.mobileapp.Quiz
 import android.content.Intent
 import android.graphics.Color
 import android.graphics.Typeface
+import android.media.MediaPlayer
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.text.method.ScrollingMovementMethod
 import android.view.View
 import android.widget.TextView
 import android.widget.Toast
@@ -32,6 +32,9 @@ class QuizType1 : AppCompatActivity(), View.OnClickListener {
     private var pagsasanayNum: Int = 0
     private var kwarter: Int = 0
     private var suplemental: Int = 0
+
+    // variable for releasing and resetting media player
+    private var mediaRelease: MediaPlayer? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -83,7 +86,7 @@ class QuizType1 : AppCompatActivity(), View.OnClickListener {
         ch3.setOnClickListener(this)
         ch4.setOnClickListener(this)
         submitBTN.setOnClickListener(this)
-
+        resultBTN4.setOnClickListener(this)
     }
 
     // Function setting question
@@ -116,6 +119,9 @@ class QuizType1 : AppCompatActivity(), View.OnClickListener {
         ch2.text = question.choice2
         ch3.text = question.choice3
         ch4.text = question.choice4
+
+        // hiding correct image model
+        correctIMG.visibility = View.INVISIBLE
     }
 
     // Function of displaying default view of choices
@@ -136,6 +142,14 @@ class QuizType1 : AppCompatActivity(), View.OnClickListener {
 
     // On click function of choices
     override fun onClick(v: View?) {
+
+        // variable for sounds maker
+        val buttonSound = MediaPlayer.create(this, R.raw.button_click_sound)
+        val correctSound = MediaPlayer.create(this, R.raw.correct_sound)
+        val wrongSound = MediaPlayer.create(this, R.raw.wrong_sound)
+        // sound when clicked
+        buttonSound.start()
+
         when (v?.id) {
             R.id.ch1 -> {
                 selectedChoiceView(ch1, 1)
@@ -155,17 +169,8 @@ class QuizType1 : AppCompatActivity(), View.OnClickListener {
                     // checking if choices are selected
                     if (submitBTN.text == "Susunod") {
                         currentPosition++
-                    } else if (submitBTN.text == "Resulta") {
-                        val i = Intent(this, ResultActivity::class.java)
-                        submitBTN.visibility = View.INVISIBLE
-                        i.putExtra(KWARTER, kwarter)
-                        i.putExtra(SUPLEMENTAL, suplemental)
-                        i.putExtra(PAGSASANAY, pagsasanayNum)
-                        i.putExtra(CORRECT_ANSWERS, correctAnswers)
-                        i.putExtra(TOTAL_QUESTIONS, questionList!!.size)
-
-                        startActivity(i)
-                    } else if (submitBTN.text == "Sagutan") {
+                    }
+                    else if (submitBTN.text == "Sagutan") {
                         Toast.makeText(this, "Pakiusap pumili ng sagot.", Toast.LENGTH_LONG).show()
                     }
                     // setting another set of question
@@ -183,10 +188,17 @@ class QuizType1 : AppCompatActivity(), View.OnClickListener {
                     if (question!!.correctAnswer != selectedChoicePosition) {
                         answerView(selectedChoicePosition, R.drawable.wrong_option_border_bg)
 
+                        // starting sound of wrong answer
+                        wrongSound.start()
+
                         // for user doesn't cheat
                         selectedChoicePosition = 0
                     } else {
                         correctAnswers++
+                        correctIMG.visibility = View.VISIBLE
+
+                        // starting sound of correct answer
+                        correctSound.start()
                     }
                     answerView(question.correctAnswer, R.drawable.correct_option_border_bg)
                     // disable choices to be clicked
@@ -197,15 +209,31 @@ class QuizType1 : AppCompatActivity(), View.OnClickListener {
 
                     // checking if there are more question
                     if (currentPosition >= questionList!!.size) {
-                        submitBTN.setBackgroundColor(Color.parseColor("#03A9F4"))
-                        submitBTN.text = "Resulta"
+                        resultBTN4.visibility = View.VISIBLE
+                        submitBTN.visibility = View.INVISIBLE
                     } else {
                         submitBTN.text = "Susunod"
                     }
                     selectedChoicePosition = 0
                 }
             }
+            R.id.resultBTN4 -> {
+                // reset sound and release them
+                mediaRelease?.reset()
+                mediaRelease?.release()
+
+                val i = Intent(this, ResultActivity::class.java)
+                submitBTN.visibility = View.INVISIBLE
+                i.putExtra(KWARTER, kwarter)
+                i.putExtra(SUPLEMENTAL, suplemental)
+                i.putExtra(PAGSASANAY, pagsasanayNum)
+                i.putExtra(CORRECT_ANSWERS, correctAnswers)
+                i.putExtra(TOTAL_QUESTIONS, questionList!!.size)
+
+                startActivity(i)
+            }
         }
+
     }
 
     // Function for answer view

@@ -2,6 +2,7 @@ package com.education.mobileapp.Quiz
 
 import android.content.Intent
 import android.graphics.Color
+import android.media.MediaPlayer
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -103,6 +104,12 @@ class QuizType5 : AppCompatActivity(), View.OnClickListener {
 
     // On click function
     override fun onClick(v: View?) {
+
+        // variable for making sound
+        val buttonSound = MediaPlayer.create(this, R.raw.button_click_sound)
+        // starting button sound
+        buttonSound.start()
+
         when(v?.id) {
             R.id.submitBTN5 -> {
 
