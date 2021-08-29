@@ -3,6 +3,11 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Projects/MobileApp/app/src/main/res/layout/activity_main.xml" value="0.1417763157894737" />
+        <entry key="..\:/Projects/MobileApp/app/src/main/res/layout/activity_pdfview.xml" value="0.1417763157894737" />
+        <entry key="..\:/Projects/MobileApp/app/src/main/res/layout/activity_quarter_list.xml" value="0.1" />
+        <entry key="..\:/Projects/MobileApp/app/src/main/res/layout/activity_topic_list.xml" value="0.1" />
+        <entry key="..\:/Projects/MobileApp/app/src/main/res/layout/item_view.xml" value="0.1" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/MobileApp/app/src/main/res/drawable/scroll_color.xml" value="0.2890625" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/MobileApp/app/src/main/res/layout/activity_quiz.xml" value="0.2657407407407407" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/MobileApp/app/src/main/res/layout/activity_quiz_type2.xml" value="0.2657407407407407" />

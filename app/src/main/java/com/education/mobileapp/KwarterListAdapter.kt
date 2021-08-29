@@ -2,6 +2,7 @@ package com.education.mobileapp
 
 import android.content.Context
 import android.content.Intent
+import android.media.MediaPlayer
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -31,6 +32,8 @@ class KwarterListAdapter(private val localDataSet: Array<String>) : RecyclerView
         private val context: Context
 
         override fun onClick(v: View) {
+            val mp = MediaPlayer.create(context,R.raw.button_click_sound)
+            mp.start();
             val position = layoutPosition
             topic_name =tv.text.toString()
             val intent = Intent(context, Pdfview::class.java)

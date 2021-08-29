@@ -3,6 +3,7 @@ package com.education.mobileapp
 import android.app.AlertDialog
 import android.content.Context
 import android.content.Intent
+import android.media.MediaPlayer
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -21,16 +22,22 @@ class MainActivity : AppCompatActivity() {
     private val context: Context = this
     //Layunin Button
     fun openLayunin(view: View) {
+        val mp = MediaPlayer.create(context,R.raw.button_click_sound)
+        mp.start();
         val i = Intent(context, Layunin::class.java);
         startActivity(i);
     }
     //Quarter List Button
     fun quarterList(view: View) {
+        val mp = MediaPlayer.create(context,R.raw.button_click_sound)
+        mp.start();
         val i = Intent(context,QuarterList::class.java);
         startActivity(i);
     }
     //Isara Button
     fun isara(view: View) {
+        val mp = MediaPlayer.create(context,R.raw.button_click_sound)
+        mp.start();
         val exitApp = AlertDialog.Builder(this, R.style.ThemeOverlay_MaterialComponents_Dialog)
         exitApp.setMessage("Sigurado ka ka ba na gusto mong isara ang Wika'skwela?")
         exitApp.setTitle("Babala")
@@ -43,7 +50,9 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun quizInfoScores(view: View) {
-        val i = Intent(context, QuizzesScores::class.java)
+        val mp = MediaPlayer.create(context,R.raw.button_click_sound)
+        mp.start();
+        val i = Intent(context, com.education.mobileapp.Quiz.QuizzesScores::class.java)
         startActivity(i)
     }
 }

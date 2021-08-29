@@ -5,6 +5,7 @@ import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 import android.widget.Toast
+import java.util.*
 
 class SQLiteDBHelper(var context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null, DATABASE_VERSION) {
 
@@ -70,6 +71,7 @@ class SQLiteDBHelper(var context: Context) : SQLiteOpenHelper(context, DATABASE_
                 quizInfo.questionNum = result.getString(result.getColumnIndex(QUE_NUM)).toInt()
                 list.add(quizInfo)
             } while (result.moveToNext())
+
         }
         result.close()
         db.close()

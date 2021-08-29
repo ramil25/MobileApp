@@ -1,5 +1,6 @@
 package com.education.mobileapp
 
+import android.media.MediaPlayer
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
@@ -18,7 +19,8 @@ class Layunin : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             android.R.id.home -> {
-
+                val mp = MediaPlayer.create(applicationContext,R.raw.button_click_sound)
+                mp.start();
                 // app icon in action bar clicked; goto parent activity.
                 finish()
                 true
