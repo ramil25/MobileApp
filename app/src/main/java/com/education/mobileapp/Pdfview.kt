@@ -1,6 +1,7 @@
 package com.education.mobileapp
 
 import android.content.Intent
+import android.media.MediaPlayer
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
@@ -39,6 +40,8 @@ class Pdfview : AppCompatActivity() {
     }
         //button listener
     fun watchVideo(view: View) {
+            val mp = MediaPlayer.create(applicationContext,R.raw.button_click_sound)
+            mp.start();
         val intent = Intent(applicationContext,VideoViewer::class.java)
             startActivity(intent)
     }
@@ -47,13 +50,16 @@ class Pdfview : AppCompatActivity() {
         return when (item.itemId) {
             android.R.id.home -> {
 
+                val mp = MediaPlayer.create(applicationContext,R.raw.button_click_sound)
+                mp.start();
                 // app icon in action bar clicked; goto parent activity.
                 finish()
                 true
             }
             // selected item for button
             R.id.pagsusulitBTN -> {
-
+                val mp = MediaPlayer.create(applicationContext,R.raw.button_click_sound)
+                mp.start();
                 val title: String = KwarterListAdapter.topic_name
 
                 // the direction of quizzes

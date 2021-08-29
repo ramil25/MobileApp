@@ -48,7 +48,8 @@ class VideoViewer : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             android.R.id.home -> {
-
+                val mp = MediaPlayer.create(applicationContext,R.raw.button_click_sound)
+                mp.start();
                 // app icon in action bar clicked; goto parent activity.
                 finish()
                 true

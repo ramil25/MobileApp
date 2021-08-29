@@ -1,6 +1,7 @@
 package com.education.mobileapp
 
 import android.content.Intent
+import android.media.MediaPlayer
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
@@ -17,6 +18,8 @@ class QuarterList : AppCompatActivity() {
     }
     //Kwarters Buttons
     fun openKwarterTopic(view:View){
+        val mp = MediaPlayer.create(applicationContext,R.raw.button_click_sound)
+        mp.start();
         var btn = view as Button
         kwarter_label = btn.text.toString()
         val i = Intent(applicationContext,TopicList::class.java)
@@ -26,7 +29,8 @@ class QuarterList : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             android.R.id.home -> {
-
+                val mp = MediaPlayer.create(applicationContext,R.raw.button_click_sound)
+                mp.start();
                 // app icon in action bar clicked; goto parent activity.
                 finish()
                 true
