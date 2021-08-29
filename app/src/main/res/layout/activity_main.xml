@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.motion.widget.MotionLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    app:layoutDescription="@xml/activity_main_scene2"
     tools:context=".MainActivity">
 
     <Button
@@ -13,8 +14,8 @@
         android:layout_marginStart="10dp"
         android:layout_marginTop="24dp"
         android:layout_marginEnd="10dp"
-        android:text="Mga Aralin"
         android:onClick="quarterList"
+        android:text="Mga Aralin"
         android:textSize="24sp"
         app:backgroundTint="@android:color/holo_green_dark"
         app:layout_constraintEnd_toEndOf="parent"
@@ -29,8 +30,8 @@
         android:layout_marginStart="10dp"
         android:layout_marginTop="18dp"
         android:layout_marginEnd="10dp"
-        android:text="Layunin"
         android:onClick="openLayunin"
+        android:text="Layunin"
         android:textSize="24sp"
         app:backgroundTint="@android:color/holo_blue_light"
         app:layout_constraintEnd_toEndOf="parent"
@@ -80,4 +81,4 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/shirley_lane_elementary_school" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.motion.widget.MotionLayout>
