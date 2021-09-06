@@ -70,8 +70,11 @@ class ResultActivity : AppCompatActivity() {
         }
 
         // showing different dialog depends on score
+        var resultSound: MediaPlayer? = null
         if (correct == 10) {
+            resultSound = MediaPlayer.create(this, R.raw.yehey_sound)
             perfectView()
+
             yeheySound = MediaPlayer.create(this, R.raw.yehey_sound)
             yeheySound?.start()
         }
@@ -79,11 +82,19 @@ class ResultActivity : AppCompatActivity() {
             averageView()
             clapSound = MediaPlayer.create(this, R.raw.clap_sound)
             clapSound?.start()
+
+            resultSound!!.start()
+        }
+        else if (correct > 3 && correct < 10) {
+            // variables for making sounds
+            resultSound = MediaPlayer.create(this, R.raw.clap_sound)
+            averageView()
+            resultSound!!.start()
+
         }
         else {
             Toast.makeText(this, "Pagbutihan pa ang pag aaral.", Toast.LENGTH_SHORT).show()
         }
-
     }
     // Function for going back to home
     fun home(view: View) {
