@@ -23,6 +23,11 @@ class ResultActivity : AppCompatActivity() {
     var quizNum: Int = 0
     var hasNext: Int = 0
 
+    // variable for media player sounds
+    private var mediaPlayer1: MediaPlayer? = null
+    private var yeheySound: MediaPlayer? = null
+    private var clapSound: MediaPlayer? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         supportActionBar!!.hide()
@@ -67,14 +72,13 @@ class ResultActivity : AppCompatActivity() {
         // showing different dialog depends on score
         if (correct == 10) {
             perfectView()
-            val yeheySound = MediaPlayer.create(this, R.raw.yehey_sound)
-            yeheySound.start()
+            yeheySound = MediaPlayer.create(this, R.raw.yehey_sound)
+            yeheySound?.start()
         }
         else if (correct > 3 && correct < 10) {
             averageView()
-            // variables for making sounds
-            val clapSound = MediaPlayer.create(this, R.raw.clap_sound)
-            clapSound.start()
+            clapSound = MediaPlayer.create(this, R.raw.clap_sound)
+            clapSound?.start()
         }
         else {
             Toast.makeText(this, "Pagbutihan pa ang pag aaral.", Toast.LENGTH_SHORT).show()
@@ -83,11 +87,22 @@ class ResultActivity : AppCompatActivity() {
     }
     // Function for going back to home
     fun home(view: View) {
+        mediaPlayer1 = MediaPlayer.create(this, R.raw.button_click_sound)
+        mediaPlayer1?.start()
+
         val i = Intent(this, MainActivity::class.java)
         startActivity(i)
+
+        // release sounds
+        yeheySound?.release()
+        clapSound?.release()
     }
 
     fun anotherQuiz(view: View) {
+        // release sounds
+        mediaPlayer1?.release()
+        yeheySound?.release()
+        clapSound?.release()
 
         // checking if there are more pag sasanay
         val title: String = KwarterListAdapter.topic_name

@@ -39,7 +39,7 @@ class MainActivity : AppCompatActivity() {
         val mp = MediaPlayer.create(context,R.raw.button_click_sound)
         mp.start();
         val exitApp = AlertDialog.Builder(this, R.style.ThemeOverlay_MaterialComponents_Dialog)
-        exitApp.setMessage("Sigurado ka ka ba na gusto mong isara ang Wika'skwela?")
+        exitApp.setMessage("Sigurado ka ba na gusto mong isara ang Wika'skwela?")
         exitApp.setTitle("Babala")
         exitApp.setPositiveButton("Oo") { dialog, which ->
             finish()

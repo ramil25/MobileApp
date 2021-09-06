@@ -29,8 +29,10 @@ class QuizType2 : AppCompatActivity(), View.OnClickListener {
     private var kwart: Int = 0
     private var supl: Int = 0
 
-    // variable for releasing and resetting media player
-    private var mediaRelease: MediaPlayer? = null
+    // variable for media player sounds
+    private var mediaPlayer1: MediaPlayer? = null
+    private var mediaPlayer2: MediaPlayer? = null
+    private var mediaPlayer3: MediaPlayer? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -72,13 +74,12 @@ class QuizType2 : AppCompatActivity(), View.OnClickListener {
 
     override fun onClick(v: View?) {
 
-        // variable of making sound
-        val buttonSound = MediaPlayer.create(this, R.raw.button_click_sound)
-        val correctSound = MediaPlayer.create(this, R.raw.correct_sound)
-        val wrongSound = MediaPlayer.create(this, R.raw.wrong_sound)
+        // sounds maker
+        mediaPlayer1 = MediaPlayer.create(this, R.raw.button_click_sound)
+        mediaPlayer2 = MediaPlayer.create(this, R.raw.correct_sound)
+        mediaPlayer3 = MediaPlayer.create(this, R.raw.wrong_sound)
 
-        // start button sound when clicked
-        buttonSound.start()
+        mediaPlayer1?.start()
 
         when (v?.id) {
             R.id.ch1 -> {
@@ -112,7 +113,7 @@ class QuizType2 : AppCompatActivity(), View.OnClickListener {
                     if (question!!.correctAnswer != selectedChoicePosition) {
                         answerView(selectedChoicePosition, R.drawable.wrong_option_border_bg)
                         // starting wrong sound
-                        wrongSound.start()
+                        mediaPlayer3?.start()
 
                         // for user doesn't cheat
                         selectedChoicePosition = 0
@@ -121,7 +122,7 @@ class QuizType2 : AppCompatActivity(), View.OnClickListener {
                         correctIMG1.visibility = View.VISIBLE
 
                         // starting correct sound
-                        correctSound.start()
+                        mediaPlayer2?.start()
                     }
                     answerView(question.correctAnswer, R.drawable.correct_option_border_bg)
                     //disable choices to be clicked
@@ -139,9 +140,7 @@ class QuizType2 : AppCompatActivity(), View.OnClickListener {
                 }
             }
             R.id.resultBTN6 -> {
-                // reset and release sound
-                mediaRelease?.reset()
-                mediaRelease?.release()
+                releaseMP()
 
                 val i = Intent(this, ResultActivity::class.java)
                 submitBTN1.visibility = View.INVISIBLE
@@ -185,6 +184,8 @@ class QuizType2 : AppCompatActivity(), View.OnClickListener {
         ch2.text = question.choice2
 
         correctIMG1.visibility = View.INVISIBLE
+
+        releaseMP()
     }
 
     // Function of displaying default view of choices
@@ -230,5 +231,12 @@ class QuizType2 : AppCompatActivity(), View.OnClickListener {
     override fun onBackPressed() {
         //super.onBackPressed()
         Toast.makeText(this, "Pakiusap tapusin muna ang pagsasanay na ito", Toast.LENGTH_SHORT).show()
+    }
+
+    // Function for releasing sounds (Media Player)
+    private fun releaseMP() {
+        mediaPlayer1?.release()
+        mediaPlayer2?.release()
+        mediaPlayer3?.release()
     }
 }

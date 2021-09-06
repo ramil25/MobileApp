@@ -59,7 +59,7 @@ class Pdfview : AppCompatActivity() {
             // selected item for button
             R.id.pagsusulitBTN -> {
                 val mp = MediaPlayer.create(applicationContext,R.raw.button_click_sound)
-                mp.start();
+                mp.start()
                 val title: String = KwarterListAdapter.topic_name
 
                 // the direction of quizzes
