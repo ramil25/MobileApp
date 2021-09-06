@@ -152,14 +152,7 @@ class QuizType1 : AppCompatActivity(), View.OnClickListener {
         mediaPlayer2 = MediaPlayer.create(this, R.raw.correct_sound)
         mediaPlayer3 = MediaPlayer.create(this, R.raw.wrong_sound)
 
-
         mediaPlayer1?.start()
-
-        // variable for sounds maker
-        var correctWrongSound: MediaPlayer? = null
-        val buttonSound = MediaPlayer.create(this, R.raw.button_click_sound)
-        // sound when clicked
-        buttonSound.start()
 
         when (v?.id) {
             R.id.ch1 -> {
@@ -201,19 +194,15 @@ class QuizType1 : AppCompatActivity(), View.OnClickListener {
 
                         // starting sound of wrong answer
                         mediaPlayer3?.start()
-
-                        correctWrongSound = MediaPlayer.create(this, R.raw.wrong_sound)
-                        correctWrongSound!!.start()
                         // for user doesn't cheat
                         selectedChoicePosition = 0
                     } else {
                         correctAnswers++
                         correctIMG.visibility = View.VISIBLE
-                       correctWrongSound = MediaPlayer.create(this, R.raw.correct_sound)
                         // starting sound of correct answer
+
                         mediaPlayer2?.start()
 
-                        correctWrongSound!!.start()
                     }
                     answerView(question.correctAnswer, R.drawable.correct_option_border_bg)
                     // disable choices to be clicked
@@ -246,7 +235,6 @@ class QuizType1 : AppCompatActivity(), View.OnClickListener {
                 startActivity(i)
             }
         }
-
     }
 
     // Function for answer view

@@ -22,9 +22,8 @@ class QuizType4 : AppCompatActivity(), View.OnClickListener {
     private var pagsasanayNum: Int = 0
     private var kwart: Int = 0
     private var supl: Int = 0
-    private var hasNextQuiz: Int = 0
 
-    // variable for media player sounds
+    // variables for media player sounds
     private var mediaPlayer1: MediaPlayer? = null
     private var mediaPlayer2: MediaPlayer? = null
     private var mediaPlayer3: MediaPlayer? = null
@@ -32,7 +31,6 @@ class QuizType4 : AppCompatActivity(), View.OnClickListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_quiz_type4)
-        supportActionBar!!.hide()
 
         // alert dialog builder
         val builder = AlertDialog.Builder(this)
@@ -62,7 +60,6 @@ class QuizType4 : AppCompatActivity(), View.OnClickListener {
                 kwart = 1
                 supl = 4
                 pagsasanayNum = 1
-                hasNextQuiz = 1
                 quizNumTV4.text = pagsasanayNum.toString()
                 // message of dialog
                 builder.setMessage("Punan ng angkop na pananda ang patlang upang mabuo ang ideya ng pahayag." +
@@ -80,7 +77,6 @@ class QuizType4 : AppCompatActivity(), View.OnClickListener {
     }
 
     override fun onClick(v: View?) {
-
         // sounds maker
         mediaPlayer1 = MediaPlayer.create(this, R.raw.button_click_sound)
         mediaPlayer2 = MediaPlayer.create(this, R.raw.correct_sound)
@@ -100,9 +96,6 @@ class QuizType4 : AppCompatActivity(), View.OnClickListener {
                             answerET1.setTextColor(Color.parseColor("#03A9F4"))
                             correctAnswers++
                             setNextQuestion()
-                            correctIMG3.visibility = View.VISIBLE
-
-                            // starting correct sound
                             mediaPlayer2?.start()
                         }
                         // check if is empty
@@ -116,8 +109,6 @@ class QuizType4 : AppCompatActivity(), View.OnClickListener {
                             answerET1.clearFocus()
                             answerET1.setBackgroundResource(R.drawable.wrong_option_border_bg)
                             setNextQuestion()
-
-                            // starting wrong sound
                             mediaPlayer3?.start()
                         }
                     }
@@ -159,14 +150,12 @@ class QuizType4 : AppCompatActivity(), View.OnClickListener {
             }
             R.id.resultBTN1 -> {
                 releaseMP()
-
                 val i = Intent(this, ResultActivity::class.java)
                 i.putExtra(KWARTER, kwart)
                 i.putExtra(SUPLEMENTAL, supl)
                 i.putExtra(PAGSASANAY, pagsasanayNum)
                 i.putExtra(CORRECT_ANSWERS, correctAnswers)
                 i.putExtra(TOTAL_QUESTIONS, questionList!!.size)
-                i.putExtra(HAS_NEXT_QUIZ, hasNextQuiz)
 
                 startActivity(i)
             }
@@ -192,7 +181,7 @@ class QuizType4 : AppCompatActivity(), View.OnClickListener {
         questionTV4.text = question!!.question
         correctAnswerTV1.text = question.correctAnswer
 
-        correctIMG3.visibility = View.INVISIBLE
+        releaseMP()
     }
 
     private fun setNextQuestion() {
@@ -207,8 +196,6 @@ class QuizType4 : AppCompatActivity(), View.OnClickListener {
 
         // disable edit text to be use
         answerET1.isEnabled = false
-
-        releaseMP()
     }
 
     // Function for not going back to previous activity
@@ -217,7 +204,7 @@ class QuizType4 : AppCompatActivity(), View.OnClickListener {
         Toast.makeText(this, "Pakiusap tapusin muna ang pagsasanay na ito", Toast.LENGTH_SHORT).show()
     }
 
-    // Function for releasing sounds (Media Player)
+    // Function for releasing sounds in media player
     private fun releaseMP() {
         mediaPlayer1?.release()
         mediaPlayer2?.release()
